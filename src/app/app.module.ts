@@ -8,7 +8,6 @@ import { FooterComponent } from './footer/footer.component';
 import { AboutComponent } from './about/about.component';
 import { RestaurantsComponent } from './restaurants/restaurants.component';
 import { RestaurantsListComponent } from './restaurants/restaurants-list/restaurants-list.component';
-import { RestaurantsDetailComponent } from './restaurants/restaurants-detail/restaurants-detail.component';
 import { MapComponent } from './restaurants/map/map.component';
 import { RestaurantMenuComponent } from './restaurants/restaurant-menu/restaurant-menu.component';
 import { RestaurantDetailComponent } from './restaurants/restaurant-detail/restaurant-detail.component';
@@ -27,7 +26,6 @@ import { BrowseNationalityComponent } from './browse-cuisine/browse-nationality/
     AboutComponent,
     RestaurantsComponent,
     RestaurantsListComponent,
-    RestaurantsDetailComponent,
     MapComponent,
     RestaurantMenuComponent,
     RestaurantDetailComponent,
