@@ -17,13 +17,16 @@ import { BrowseCuisineComponent } from './browse-cuisine/browse-cuisine.componen
 import { BrowseTypeComponent } from './browse-type/browse-type.component';
 import { BrowseNationalityComponent } from './browse-cuisine/browse-nationality/browse-nationality.component';
 import { FormsModule } from '@angular/forms';
-import { RouterModule, Routes } from '@angular/router'
+import { RouterModule, Routes } from '@angular/router';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component'
 
 const appRoutes: Routes = [
   {path: '', component: LandingPageComponent},
   {path: 'dish-tionary', component: DishTionaryComponent},
   {path: 'about', component: AboutComponent},
-  {path: 'restaurant-results', component: RestaurantsComponent}
+  {path: 'restaurant-results', component: RestaurantsComponent},
+  {path: 'page-not-found', component: PageNotFoundComponent},
+  {path: '**', redirectTo: '/page-not-found'}
 ]
 
 @NgModule({
@@ -42,7 +45,8 @@ const appRoutes: Routes = [
     DishDetailComponent,
     BrowseCuisineComponent,
     BrowseTypeComponent,
-    BrowseNationalityComponent
+    BrowseNationalityComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
