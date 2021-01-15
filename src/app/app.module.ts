@@ -16,6 +16,15 @@ import { DishDetailComponent } from './dish-tionary/dish-detail/dish-detail.comp
 import { BrowseCuisineComponent } from './browse-cuisine/browse-cuisine.component';
 import { BrowseTypeComponent } from './browse-type/browse-type.component';
 import { BrowseNationalityComponent } from './browse-cuisine/browse-nationality/browse-nationality.component';
+import { FormsModule } from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router'
+
+const appRoutes: Routes = [
+  {path: '', component: LandingPageComponent},
+  {path: 'dish-tionary', component: DishTionaryComponent},
+  {path: 'about', component: AboutComponent},
+  {path: 'restaurant-results', component: RestaurantsComponent}
+]
 
 @NgModule({
   declarations: [
@@ -36,7 +45,9 @@ import { BrowseNationalityComponent } from './browse-cuisine/browse-nationality/
     BrowseNationalityComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    RouterModule.forRoot(appRoutes),
   ],
   providers: [],
   bootstrap: [AppComponent]
