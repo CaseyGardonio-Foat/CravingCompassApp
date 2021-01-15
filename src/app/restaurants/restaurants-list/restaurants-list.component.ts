@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RestaurantDetail } from '../restaurant-detail.model';
 
 @Component({
   selector: 'app-restaurants-list',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./restaurants-list.component.css']
 })
 export class RestaurantsListComponent implements OnInit {
+  restaurantsList: RestaurantDetail[]
 
   constructor() { }
 
