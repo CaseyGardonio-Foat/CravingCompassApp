@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
@@ -16,18 +18,7 @@ import { DishDetailComponent } from './dish-tionary/dish-detail/dish-detail.comp
 import { BrowseCuisineComponent } from './browse-cuisine/browse-cuisine.component';
 import { BrowseTypeComponent } from './browse-type/browse-type.component';
 import { BrowseNationalityComponent } from './browse-cuisine/browse-nationality/browse-nationality.component';
-import { FormsModule } from '@angular/forms';
-import { RouterModule, Routes } from '@angular/router';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component'
-
-const appRoutes: Routes = [
-  {path: '', component: LandingPageComponent},
-  {path: 'dish-tionary', component: DishTionaryComponent},
-  {path: 'about', component: AboutComponent},
-  {path: 'restaurant-results', component: RestaurantsComponent},
-  {path: 'page-not-found', component: PageNotFoundComponent},
-  {path: '**', redirectTo: '/page-not-found'}
-]
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +42,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes),
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
