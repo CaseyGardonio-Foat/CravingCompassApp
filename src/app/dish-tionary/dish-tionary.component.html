@@ -12,9 +12,23 @@
             <h2>Browse</h2>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-12">
-            <app-dish-detail></app-dish-detail>
+    <div class="container">
+        <div class="row"> 
+            <ul *ngFor="let dish of dishes"> 
+                <li>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-3">
+                        <img [src]="dish.imagePath" alt='{{dish.name}}'>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="row">
+                            <h3>{{ dish.name }}</h3>
+                            <p>{{ dish.description }}</p>
+                        </div>
+                    </div>
+                </li> 
+            </ul> 
         </div>
     </div>
+
 </div>

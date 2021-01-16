@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DishService } from '../dish.service';
 
 @Component({
   selector: 'app-dish-tionary',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dish-tionary.component.css']
 })
 export class DishTionaryComponent implements OnInit {
+  dishes = [];
 
-  constructor() { }
+  constructor(private dishService: DishService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.dishes = this.dishService.getAllDishes(); 
+    console.log(this.dishes);
   }
-
 }

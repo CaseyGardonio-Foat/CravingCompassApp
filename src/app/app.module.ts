@@ -19,6 +19,7 @@ import { BrowseCuisineComponent } from './browse-cuisine/browse-cuisine.componen
 import { BrowseTypeComponent } from './browse-type/browse-type.component';
 import { BrowseNationalityComponent } from './browse-cuisine/browse-nationality/browse-nationality.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { DishService } from './dish.service';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,9 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     FormsModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    DishService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
