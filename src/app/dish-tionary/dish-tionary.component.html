@@ -12,24 +12,23 @@
             <h2>Browse</h2>
         </div>
     </div>
-    <div class="container">
-        <div class="row"> 
-            <ul *ngFor="let dish of dishes" class="list-unstyled"> 
-                <li>
-                    <div class="col-md-1"></div>
-                    <div class="col-md-3 ">
-                        <img [src]="dish.imagePath" 
-                        alt='{{dish.name}}'
-                        class='w-3 h-auto'>
-                    </div>
-                    <div class="col-md-8">
-                        <div class="row">
-                            <h3>{{ dish.name }}</h3>
-                            <p>{{ dish.description }}</p>
-                        </div>
-                    </div>
-                </li> 
-            </ul> 
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col bg-primary">blah</div>
+        <div class="col bg-success">blah</div> 
+        <div class="col bg-danger">blah</div>
+    </div>
+
+    <div class="row" *ngFor="let dish of dishes"> 
+        <img [src]="dish.imagePath" 
+            alt='{{dish.name}}'
+            class='col-md-2'
+            >
+        <div class="col-md-1"></div>
+        <div class="col-md-9">
+            <h3>{{ dish.name }}</h3>
+            <p>{{ dish.description }}</p>
         </div>
     </div>
 </div>
