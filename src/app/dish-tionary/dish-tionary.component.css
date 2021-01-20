@@ -6,7 +6,14 @@ img {
     flex-flow: row;
 }
 
-.row {
-    margin-top: 40px;
-    background-color: azure;
+#entry {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    background-color: #681648;
+    font-size: medium;
+    color: white;
+}
+
+.btn {
+    color: white;
 }
