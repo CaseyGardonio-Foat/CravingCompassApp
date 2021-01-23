@@ -20,6 +20,7 @@ import { BrowseTypeComponent } from './browse-type/browse-type.component';
 import { BrowseNationalityComponent } from './browse-cuisine/browse-nationality/browse-nationality.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { DishService } from './dish.service';
+import { BrowseDropdownDirective } from './browse-dropdown.directive';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { DishService } from './dish.service';
     BrowseCuisineComponent,
     BrowseTypeComponent,
     BrowseNationalityComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    BrowseDropdownDirective
   ],
   imports: [
     BrowserModule,

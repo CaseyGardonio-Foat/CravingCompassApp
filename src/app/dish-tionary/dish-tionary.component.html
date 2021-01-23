@@ -1,12 +1,12 @@
 <div class="container-fluid">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center my-5">
         <div class="col-md-10">
             <h1 class="display-4 text-center">Welcome to the Dish-tionary!</h1>
             <p class="lead text-center">Learn more about unfamiliar dishes! Search by name or browse by region, cuisine, or type.</p>
         </div>
     </div>
 
-    <div class="row justify-content-center">
+    <div class="row justify-content-center mb-5">
         <div class="col-md-4">
             <form class="form-inline ml-3">
                 <div class="input-group">
@@ -21,20 +21,38 @@
                 </div>
             </form>
         </div>
-        <div class="col-md-2"></div>
         <div class="col-md-4 justify-content-end">
-            <form class="form-inline ml-3">
-                <div class="input-group">
-                  <input type="text" class="form-control" placeholder="Browse by cuisine">
-                  <div class="input-group-append">
-                    <button type="button" class="btn btn-danger">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-                        </svg>
-                    </button>
-                  </div>
-                </div>
-            </form>
+            <div class='btn-group' >
+                <button type='button' class='btn btn-danger btn-block dropdown-toggle' appBrowseDropdown>
+                    Browse by cuisine 
+                    <!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                    </svg> -->
+                    <span class='caret'></span>
+                </button>
+                <ul class='dropdown-menu'>
+                    <div>
+                        <li><a style="cursor: pointer" (click)="onFilterDishes()" 
+                            id="africa">Africa</a></li>
+                        <li><a style="cursor: pointer" (click)="onFilterDishes()" 
+                            id="americas">Americas</a></li>
+                        <li><a style="cursor: pointer" (click)="onFilterDishes()"
+                            id="europe">Europe</a></li>
+                        <li><a style="cursor: pointer" (click)="onFilterDishes()"
+                            id="mediterranean">Mediterranean</a></li>
+                        <li><a style="cursor: pointer" (click)="onFilterDishes()"
+                            id="easternEurope">Eastern Europe</a></li>
+                        <li><a style="cursor: pointer" (click)="onFilterDishes()"
+                            id="middleEast">Middle East</a></li>
+                        <li><a style="cursor: pointer" (click)="onFilterDishes()"
+                            id="asia">Asia</a></li>
+                        <li><a style="cursor: pointer" (click)="onFilterDishes()"
+                            id="southeastAsia">Southeast Asia</a></li>
+                        <li><a style="cursor: pointer" (click)="onFilterDishes()"
+                            id="australiaNewZealand">Australia/New Zealand</a></li>
+                    </div>  
+                </ul>
+            </div>
         </div>
     </div>
 </div>

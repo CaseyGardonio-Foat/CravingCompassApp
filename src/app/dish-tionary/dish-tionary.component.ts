@@ -15,4 +15,8 @@ export class DishTionaryComponent implements OnInit {
     this.dishes = this.dishService.getAllDishes(); 
     console.log(this.dishes);
   }
+
+  onFilterDishes() {
+    console.log('dishes filtered');
+  }
 }
