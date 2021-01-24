@@ -1,9 +1,10 @@
 .jumbotron {
   max-width: 1900px;
-  max-height: 900px;
+  min-height: 900px;
   background-image: url(../../assets/landingPageHero180.png);
   background-repeat: no-repeat;
   background-size: 100%;
+  padding: 0;
 }
 
 #hero-background-image {
@@ -11,4 +12,14 @@
   background-repeat: no-repeat;
   max-width: 1900px;
   max-height: 900px;
+}
+
+.nav {
+  margin:0px;
+	padding: 0px;
+}
+
+.img {
+  margin: 0px;
+  padding: 0px
 }

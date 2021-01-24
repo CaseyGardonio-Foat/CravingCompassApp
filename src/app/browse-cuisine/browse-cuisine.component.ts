@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { DishService } from '../dish.service';
+import { Dish } from '../dish.model';
 
 @Component({
   selector: 'app-browse-cuisine',
@@ -6,10 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./browse-cuisine.component.css']
 })
 export class BrowseCuisineComponent implements OnInit {
+  @Input() dishArray: Dish[]
 
-  constructor() { }
+  constructor(private dishService: DishService) { }
 
   ngOnInit(): void {
+  }
+
+  onSelected() {
+    this.dishArray = this.dishService.getKeywordDishes('keyword');
   }
 
 }

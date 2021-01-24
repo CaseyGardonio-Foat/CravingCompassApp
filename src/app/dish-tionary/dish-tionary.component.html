@@ -1,3 +1,4 @@
+<app-header></app-header>
 <div class="container-fluid">
     <div class="row justify-content-center my-5">
         <div class="col-md-10">
@@ -21,6 +22,31 @@
                 </div>
             </form>
         </div>
+        <!--from W3 Schools--doesn't work
+        <div class="dropdown">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+              Dropdown button
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#">Link 1</a>
+              <a class="dropdown-item" href="#">Link 2</a>
+              <a class="dropdown-item" href="#">Link 3</a>
+            </div>
+        </div> 
+        -->
+        <!--from Bootstrap 4 documentation--doesn't work
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Dropdown button
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+        </div>
+        -->
+        <!--below follows instructions from Udemy Angular class--doesn't work-->
         <div class="col-md-4 justify-content-end">
             <div class='btn-group' >
                 <button type='button' class='btn btn-danger btn-block dropdown-toggle' appBrowseDropdown>
@@ -30,28 +56,17 @@
                     </svg> -->
                     <span class='caret'></span>
                 </button>
-                <ul class='dropdown-menu'>
-                    <div>
-                        <li><a style="cursor: pointer" (click)="onFilterDishes()" 
-                            id="africa">Africa</a></li>
-                        <li><a style="cursor: pointer" (click)="onFilterDishes()" 
-                            id="americas">Americas</a></li>
-                        <li><a style="cursor: pointer" (click)="onFilterDishes()"
-                            id="europe">Europe</a></li>
-                        <li><a style="cursor: pointer" (click)="onFilterDishes()"
-                            id="mediterranean">Mediterranean</a></li>
-                        <li><a style="cursor: pointer" (click)="onFilterDishes()"
-                            id="easternEurope">Eastern Europe</a></li>
-                        <li><a style="cursor: pointer" (click)="onFilterDishes()"
-                            id="middleEast">Middle East</a></li>
-                        <li><a style="cursor: pointer" (click)="onFilterDishes()"
-                            id="asia">Asia</a></li>
-                        <li><a style="cursor: pointer" (click)="onFilterDishes()"
-                            id="southeastAsia">Southeast Asia</a></li>
-                        <li><a style="cursor: pointer" (click)="onFilterDishes()"
-                            id="australiaNewZealand">Australia/New Zealand</a></li>
-                    </div>  
-                </ul>
+                <div class='dropdown-menu' aria-labelledby="dropdownMenuButton">
+                    <a style="cursor: pointer" (click)="onFilterDishes()" id="africa">Africa</a>
+                    <a style="cursor: pointer" (click)="onFilterDishes()" id="americas">Americas</a>
+                    <a style="cursor: pointer" (click)="onFilterDishes()" id="europe">Europe</a>
+                    <a style="cursor: pointer" (click)="onFilterDishes()" id="mediterranean">Mediterranean</a>
+                    <a style="cursor: pointer" (click)="onFilterDishes()" id="easternEurope">Eastern Europe</a>
+                    <a style="cursor: pointer" (click)="onFilterDishes()" id="middleEast">Middle East</a>
+                    <a style="cursor: pointer" (click)="onFilterDishes()" id="asia">Asia</a>
+                    <a style="cursor: pointer" (click)="onFilterDishes()" id="southeastAsia">Southeast Asia</a>
+                    <a style="cursor: pointer" (click)="onFilterDishes()" id="australiaNewZealand">Australia/Oceania</a>
+                </div>   
             </div>
         </div>
     </div>
