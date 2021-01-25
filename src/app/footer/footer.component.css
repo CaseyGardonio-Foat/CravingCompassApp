@@ -4,5 +4,6 @@ footer {
     width: 100%;
     /* height: 40px; */
     line-height: 16px;
-    background-color: #F47B26;
+    /* background-color: #F47B26; */
+    background-image: linear-gradient(#F47B26, #F05423);
 }
