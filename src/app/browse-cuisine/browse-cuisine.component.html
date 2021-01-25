@@ -5,32 +5,35 @@
     </div>
   </div>
   <div class="row text-center my-5">
-    <div class="col-md-2" style="cursor: pointer;" (click)="onSelected('africa')">
+    <div class="col-md-2" style="cursor: pointer;" (click)="onContinentSelected('Africa')">
       <img href="#" src="../../assets/foodIcons/Regions/Region_Africa.svg" style="height: 75px" class="mb-3">
       <h5 class="font-weight-light">Africa</h5>
     </div>
-    <div class="col-md-2" style="cursor: pointer;" (click)="onSelected('americas')">
+    <div class="col-md-2" style="cursor: pointer;" (click)="onContinentSelected('Americas')">
       <img href="#" src="../../assets/foodIcons/Regions/Region_Americas.svg" style="height: 75px" class="mb-3">
       <h5 class="font-weight-light">Americas</h5>
     </div>
-    <div class="col-md-2" style="cursor: pointer;" (click)="onSelected('asia')">
+    <div class="col-md-2" style="cursor: pointer;" (click)="onContinentSelected('Asia')">
       <img href="#" src="../../assets/foodIcons/Regions/Region_Asia.svg" style="height: 75px" class="mb-3">
       <h5 class="font-weight-light">Asia</h5>
     </div>
-    <div class="col-md-2" style="cursor: pointer;" (click)="onSelected('australia')">
+    <div class="col-md-2" style="cursor: pointer;" (click)="onContinentSelected('Australia-Oceania')">
       <img href="#" src="../../assets/foodIcons/Regions/Region_Australia-Oceania.svg" style="height: 75px" class="mb-3">
       <h5 class="font-weight-light">Australia/Oceania</h5>
     </div>
-    <div class="col-md-2" style="cursor: pointer;" (click)="onSelected('europe')">
+    <div class="col-md-2" style="cursor: pointer;" (click)="onContinentSelected('Europe')">
       <img href="#" src="../../assets/foodIcons/Regions/Region_Europe.svg" style="height: 75px" class="mb-3">
       <h5 class="font-weight-light">Europe</h5>
     </div>
-    <div class="col-md-2" style="cursor: pointer;" (click)="onSelected('middleEast')">
+    <div class="col-md-2" style="cursor: pointer;" (click)="onContinentSelected('Middle-East')">
       <img href="#" src="../../assets/foodIcons/Regions/Region_Middle-East.svg" style="height: 75px" class="mb-3">
       <h5 class="font-weight-light">Middle East</h5>
     </div>
   </div>
-</div>
-<div>
-  <div *ngFor="let culture of region" [culture]="culture">{{ culture.name }}</div>
+  <div class="row text-center my-5" *ngIf="selectedContinentRegions.length > -1">
+    <div *ngFor="let region of selectedContinentRegions" class="col-md-2" style="cursor: pointer;">
+      <img href="#" src='{{ region.imagePath }}' style="height: 75px" class="mb-3">
+      <h5 class="font-weight-light">{{ region.name }}</h5>
+    </div>
+  </div>
 </div>

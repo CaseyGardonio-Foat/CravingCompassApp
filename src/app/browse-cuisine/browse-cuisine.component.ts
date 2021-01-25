@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { DishService } from '../dish.service';
 import { Dish } from '../dish.model';
+import { CuisineService } from '../cuisine.service';
+import { Cuisine } from '../cuisine.model';
 
 @Component({
   selector: 'app-browse-cuisine',
@@ -8,15 +10,30 @@ import { Dish } from '../dish.model';
   styleUrls: ['./browse-cuisine.component.css']
 })
 export class BrowseCuisineComponent implements OnInit {
-  @Input() dishArray: Dish[]
+  @Input() dishArray: Dish[];
+  cuisines: Cuisine[] = []
+  selectedContinentRegions: Cuisine[] = [];
+  selectedRegionalCuisines: Cuisine[] = []
 
-  constructor(private dishService: DishService) { }
+  constructor(private dishService: DishService, private cuisineService: CuisineService) { }
 
   ngOnInit(): void {
+    this.cuisines = this.cuisineService.getAllCuisines(); 
+    console.log(this.cuisines);
   }
 
-  onSelected() {
-    this.dishArray = this.dishService.getKeywordDishes('keyword');
+  onContinentSelected(selectedContinent) {
+    this.selectedContinentRegions = [];
+    this.cuisineService.selectCuisines(selectedContinent); 
+    this.selectedContinentRegions = this.cuisineService.selectedCuisines;
+    console.log(this.selectedContinentRegions)
+  }
+
+  onRegionSelected(selectedRegion) {
+    this.selectedRegionalCuisines = [];
+    this.cuisineService.selectCuisines(selectedRegion); 
+    this.selectedRegionalCuisines = this.cuisineService.selectedCuisines;
+    console.log(this.selectedRegionalCuisines)
   }
 
 }
