@@ -1,8 +1,19 @@
 @import url('./assets/scss/modules/_fonts.scss');
 
-.text-display {
+.text-display-1 {
   font-family: 'Modesto Open InlineFill';
   font-size: 32pt;
+}
+
+.text-display-2 {
+  font-family: 'Modesto Open InlineFill';
+  font-size: 24pt;
+}
+
+.text-display-nav {
+  font-family: 'Modesto Open InlineFill';
+  font-size: 12pt;
+  font-weight: bold;
 }
 
 /* $primary_font: 'Jost';
