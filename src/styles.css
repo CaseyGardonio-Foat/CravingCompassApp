@@ -16,6 +16,15 @@
   font-weight: bold;
 }
 
+.navbar-brand {
+  /* display:inline-block; */
+  padding-top:0rem;
+  padding-bottom:0rem;
+  /* margin-right:1rem;
+  font-size:1.25rem;
+  line-height:inherit;
+  white-space:nowrap */
+}
 /* $primary_font: 'Jost';
 
 /* font-weight */

@@ -35,5 +35,13 @@ export class BrowseCuisineComponent implements OnInit {
     this.selectedRegionalCuisines = this.cuisineService.selectedCuisines;
     console.log(this.selectedRegionalCuisines)
   }
+ 
+  // onCuisineSelected(selectedCusine) {
+  //   this.selectedRegionalCuisines = [];
+  //   this.cuisineService.selectCuisines(selectedRegion); 
+  //   this.selectedRegionalCuisines = this.cuisineService.selectedCuisines;
+  //   console.log(this.selectedRegionalCuisines)
+  // }
+
 
 }
