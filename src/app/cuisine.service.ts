@@ -17,6 +17,7 @@ export class CuisineService {
     new Cuisine('French', '../assets/foodIcons/French_Croissant.svg', 'country', ['Europe'], []),
     new Cuisine('German', '../assets/foodIcons/German_BeerHall.svg', 'country', ['Europe'], []),
     new Cuisine('Greek', '../assets/foodIcons/Greek_Kebab.svg', 'country', ['Europe'], []),
+    new Cuisine('Italian', '../assets/foodIcons/Italian_Pasta.svg', 'country', ['Europe'], []),
     new Cuisine('Spanish', '../assets/foodIcons/Spanish_Paella.svg', 'country', ['Europe'], []),
   ]
 
