@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -7,6 +7,7 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./landing-page.component.css']
 })
 export class LandingPageComponent implements OnInit {
+  @ViewChild('f') searchForm: NgForm;
 
   constructor() { }
 
@@ -14,7 +15,7 @@ export class LandingPageComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log('form submitted');
+    console.log(this.searchForm);
   }
 
 }

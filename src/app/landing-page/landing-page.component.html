@@ -32,7 +32,7 @@
         </p>
 
         <!--start: landing page jumbotron form-->
-        <form class="text-light" (ngSubmit)="onSubmit()">
+        <form class="text-light" (ngSubmit)="onSubmit()" #f="ngForm">
           <div class="form-group">
             <label class="sr-only" for="dishName">I know just what I want...</label>
             <input type="text" class="form-control" id="dishName" name="dishName" ngModel
