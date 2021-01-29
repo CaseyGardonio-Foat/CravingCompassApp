@@ -24,3 +24,11 @@
   margin: 0px;
   padding: 0px
 }
+
+input.ng-invalid.ng-touched {
+  border: 2px solid #F47B26;
+}
+
+input.ng-valid.ng-touched {
+  border: 2px solid #8A9F33;
+}
