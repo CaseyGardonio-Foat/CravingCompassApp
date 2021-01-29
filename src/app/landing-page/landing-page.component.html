@@ -1,5 +1,7 @@
+<!--start: landing page jumbotron; see css for jumbotron image settings-->
 <div class="jumbotron jumbotron-fluid" style="min-height: 100vh;">
   <div class="container-fluid">
+    <!--start: landing page top navigation buttons-->
     <div class="row">
       <ul class="nav align-items-center" style="justify-content: space-around;">
         <li class="nav-item align-self-top" style="padding-left: 100px;">
@@ -18,7 +20,9 @@
         </li>
       </ul>
     </div>
+    <!--end: landing page top navigation buttons-->
 
+    <!--start: landing page jumbotron headline and form-->
     <div class="row justify-content-center align-items-center" style="height: 400px">
       <div class="text-center">
         <p class="text-display-1 text-uppercase text-right">
@@ -27,18 +31,21 @@
           <span class="text-white">craving?</span>
         </p>
 
-        <form class="text-light">
+        <!--start: landing page jumbotron form-->
+        <form class="text-light" (ngSubmit)="onSubmit()">
           <div class="form-group">
             <label class="sr-only" for="dishName">I know just what I want...</label>
-            <input type="text" class="form-control" id="dishName" placeholder="I know just what I want...">
+            <input type="text" class="form-control" id="dishName" name="dishName" ngModel
+            placeholder="I know just what I want...">
           </div>
           
           <div class="form-inline" style="margin-bottom: 1rem;">
             <label class="sr-only" for="location">Where do you want it?</label>
-            <input type="text" class="form-control col-6" id="location" placeholder="Where do you want it?">
+            <input type="text" class="form-control col-6" id="location" name="location" ngModel
+            placeholder="Where do you want it?">
 
             <label class="sr-only" for="distance">distance</label>
-            <select class="custom-select form-control col-2" id="distance">
+            <select class="custom-select form-control col-2" id="distance" name="distance" ngModel>
               <option value=".5">.5 mi</option>
               <option value="1">1 mi</option>
               <option selected value="5">5 mi</option>
@@ -47,25 +54,23 @@
             </select>
 
             <label class="sr-only" for="time">When do you want it?</label>
-            <input type="text" class="form-control col-4" id="time" placeholder="When do you want it?">
+            <input type="text" class="form-control col-4" id="time" name="time" ngModel
+            placeholder="When do you want it?">
           </div>
 
           <button class="btn btn-outline-warning btn-block text-display-nav" type="submit">Let's Go!</button>
         </form>
-      
+        <!--end: landing page jumbotron form-->
+
       </div>  
     </div>
+    <!--end: landing page jumbotron headline and form-->
+
   </div>
 </div>
+<!--end: landing page jumbotron-->
 
-<!-- <section>
-  <div class="container-fluid" style="min-height: 100vh;">
-    <div class="row">
-      <img id="hero-background-image " src="../../assets/landingPageHero180-2.png" class="col-lg">
-    </div>
-  </div>
-</section> -->
-
+<!--start: landing page browse cuisines menus-->
 <section>
   <div class="container-fluid">
     <div class="row justify-content-center">
@@ -76,3 +81,4 @@
     </div>
   </div>
 </section>
+<!--end: landing page browse cuisines menus-->
