@@ -15,9 +15,6 @@
         <li class="nav-item" routerLinkActive="selected">
           <a class="nav-link text-display-nav text-light" routerLink="dish-tionary">Dish-tionary</a>
         </li>
-        <li class="nav-item" routerLinkActive="selected">
-          <a class="nav-link text-display-nav text-light" routerLink="restaurant-results">Search</a>
-        </li>
       </ul>
     </div>
     <!--end: landing page top navigation buttons-->
@@ -45,21 +42,41 @@
             placeholder="Where do you want it?">
 
             <label class="sr-only" for="distance">distance</label>
-            <select class="custom-select form-control col-2" id="distance" name="distance" ngModel required>
+            <select class="custom-select form-control col-2" id="distance" name="distance" 
+            [ngModel]="defaultDistance" required>
               <option value=".5">.5 mi</option>
               <option value="1">1 mi</option>
-              <option selected value="5">5 mi</option>
+              <option value="5">5 mi</option>
               <option value="10">10 mi</option>
               <option value="20">20 mi</option>
             </select>
 
             <label class="sr-only" for="time">When do you want it?</label>
-            <input type="text" class="form-control col-4" id="time" name="time" ngModel
-            placeholder="When do you want it?">
+            <select class="custom-select form-control col-4" id="time" name="time"  
+            placeholder="When do you want it?" required>
+              <option value="now">Now</option>
+              <option value="anytime">Any Time</option>
+              <option value="9-10a">9-10:00 am</option>
+              <option value="10-11a">10-11:00 am</option>
+              <option value="11-12a">11:00 am-noon</option>
+              <option value="12-1p">noon-1:00 pm</option>
+              <option value="1-2p">1-2:00 pm</option>
+              <option value="2-3p">2-3:00 pm</option>
+              <option value="3-4p">3-4:00 pm</option>
+              <option value="4-5p">4-5:00 pm</option>
+              <option value="5-6p">5-6:00 pm</option>
+              <option value="6-7p">6-7:00 pm</option>
+              <option value="7-8p">7-8:00 pm</option>
+              <option value="8-9p">8-9:00 pm</option>
+              <option value="9-10p">9-10:00 pm</option>
+              <option value="10-11p">10-11:00 pm</option>
+              <option value="11-12p">11:00 pm-midnight</option>
+            </select>
+
           </div>
 
           <button class="btn btn-outline-warning btn-block text-display-nav" type="submit"
-          [disabled]='!f.valid'>Let's Go!</button>
+          [disabled]='!f.valid' routerLink="restaurant-results">Let's Go!</button>
         </form>
         <!--end: landing page jumbotron form-->
 
