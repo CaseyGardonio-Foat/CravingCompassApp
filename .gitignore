@@ -4,7 +4,7 @@
 /dist
 /tmp
 /out-tsc
-./app/keys.service.ts
+/app/keys.service.ts
 # Only exists if Bazel was run
 /bazel-out
 
