@@ -32,7 +32,7 @@
         </p>
 
         <!--start: landing page jumbotron form-->
-        <form class="text-light" (ngSubmit)="onSubmit()" #f="ngForm">
+        <form class="text-light" (ngSubmit)="getRestaurants()" #f="ngForm">
           <div class="form-group">
             <label class="sr-only" for="dishName">I know just what I want...</label>
             <input type="text" class="form-control" id="dishName" name="dishName" ngModel required
@@ -59,7 +59,7 @@
           </div>
 
           <button class="btn btn-outline-warning btn-block text-display-nav" type="submit"
-          [disabled]='!f.valid' routerLink="restaurant-results">Let's Go!</button>
+          [disabled]='!f.valid' >Let's Go!</button>
         </form>
         <!--end: landing page jumbotron form-->
 
