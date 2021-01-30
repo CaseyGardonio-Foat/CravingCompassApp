@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { KeysService } from '../keys.service';
@@ -27,10 +27,12 @@ export class LandingPageComponent implements OnInit {
   }
 
   getRestaurants() {
+    // let searchParams = new HttpParams().set('40.68919','-73.992378', '1', '1');
     console.log(this.http
-    .get('https://api.documenu.com/v2/menuitems/search/geo?lat=40.688072&lon=-73.997385&distance=1&search=buffalo%20chicken', 
+    .get(`https://api.documenu.com/v2/menuitems/search/geo?lat=40.688072&lon=-73.997385&distance=${this.searchForm.value.distance}&search=${this.searchForm.value.dishName}`, 
     {
       headers: new HttpHeaders({'X-API-KEY': this.documenuKey}),
+      // params: searchParams
     }) 
     .subscribe(restaurants => {
       console.log(restaurants);

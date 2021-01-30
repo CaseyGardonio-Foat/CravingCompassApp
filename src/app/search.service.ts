@@ -23,7 +23,7 @@ export class SearchService implements OnInit {
   // }
 
 
-//the following method for making a request from the Documenu API does not successfully submit
+//the following method for making a request from the Documenu API successfully submits from landing-page
   getRestaurants() {
     console.log(this.http
     .get('https://api.documenu.com/v2/menuitems/search/geo?lat=40.688072&lon=-73.997385&distance=1&search=buffalo%20chicken', 
