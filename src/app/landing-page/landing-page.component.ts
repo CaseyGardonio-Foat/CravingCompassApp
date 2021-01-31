@@ -23,6 +23,12 @@ export class LandingPageComponent implements OnInit {
     this.documenuKey = this.keysService.getDocumenuKey();
   }
 
+
+  //sample https request code from google maps api
+  // https://maps.googleapis.com/maps/api/service/output?parameters
+
+
+
   /*this code does not work--throws the following error:
   core.js:5980 ERROR TypeError: Cannot read property 'length' of undefined
     at http.js:105

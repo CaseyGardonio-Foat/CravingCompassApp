@@ -17,8 +17,13 @@ export class SearchService implements OnInit {
   }
 
   // getSearchCoordinates() {
-  //   this.http.get().subscribe(latLong=> {
-  //     console.log(latLong);
+  //   return this.http
+  //   .get(`https://maps.googleapis.com/maps/api/geocoding/json?parameters`,
+  //   {
+  //     headers: new HttpHeaders({: this.mapsKey})
+  //   })
+  //   .subscribe(response=> {
+  //     console.log(response);
   //   });
   // }
 
