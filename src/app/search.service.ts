@@ -23,17 +23,12 @@ export class SearchService implements OnInit {
   // }
 
 
-//the following method for making a request from the Documenu API successfully submits from landing-page
-  getRestaurants() {
-    console.log(this.http
-    .get('https://api.documenu.com/v2/menuitems/search/geo?lat=40.688072&lon=-73.997385&distance=1&search=buffalo%20chicken', 
+//the following method for making a request from the Documenu API successfully submits from landing-page but not when outsourced to this service; see landing-page.component.ts for more info
+  getRestaurants(searchLat, searchLon, searchDistance, searchDishName) {
+    return (this.http
+    .get(`https://api.documenu.com/v2/menuitems/search/geo?lat=${searchLat}&lon=${searchLon}&distance=${searchDistance}&search=${searchDishName}`, 
     {
       headers: new HttpHeaders({'X-API-KEY': this.documenuKey}),
-    })
-    .subscribe(restaurants => {
-      console.log(restaurants);
     }));
-  
   }
-
 }
