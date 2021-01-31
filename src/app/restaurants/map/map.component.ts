@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { KeysService } from 'src/app/keys.service';
+import { AgmCoreModule } from '@agm/core';
 
 @Component({
   selector: 'app-map',
@@ -10,6 +11,8 @@ import { KeysService } from 'src/app/keys.service';
 export class MapComponent implements OnInit {
   documenuKey: string;
   mapsKey: string;
+  lat: number = 40.688072;
+  lng: number = -73.997385;
 
   constructor(
     private http: HttpClient,
@@ -17,29 +20,7 @@ export class MapComponent implements OnInit {
 
   ngOnInit(): void {
     this.documenuKey = this.keysService.getDocumenuKey();
-    this.mapsKey = this.keysService.getMapsKey();
-    this.http
-    .get(`https://maps.googleapis.com/maps/api/js?key=${this.mapsKey}&callback=initMap&libraries=&v=weekly`)
-    .subscribe(map =>{
-      // Initialize and add the map
-      function initMap() {
-        // The location of Uluru
-        const uluru = { lat: -25.344, lng: 131.036 };
-        // The map, centered at Uluru
-        const map = new google.maps.Map(document.getElementById("map"), {
-          zoom: 4,
-          center: uluru,
-        });
-        // The marker, positioned at Uluru
-        const marker = new google.maps.Marker({
-          position: uluru,
-          map: map
-        });
-      }
-    });
-  }
-
+    this.mapsKey = this.keysService.getMapsKey();  
+  };
   
-
-
 }

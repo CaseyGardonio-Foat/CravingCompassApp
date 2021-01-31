@@ -1,8 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import { AgmCoreModule } from '@agm/core';
 
 import { AppComponent } from './app.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
@@ -49,7 +50,10 @@ import { KeysService } from './keys.service';
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    AgmCoreModule.forRoot({
+      apiKey: ''
+    })
   ],
   providers: [
     DishService,
@@ -58,4 +62,12 @@ import { KeysService } from './keys.service';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule implements OnInit {
+  apiKey: string;
+
+  constructor(private keysService: KeysService){}
+
+  ngOnInit() {
+    this.apiKey = this.keysService.getMapsKey();
+  }
+}
