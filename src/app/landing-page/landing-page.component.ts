@@ -4,6 +4,7 @@ import { NgForm } from '@angular/forms';
 import { KeysService } from '../keys.service';
 import { SearchService } from '../search.service';
 import { map } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-landing-page',
@@ -17,7 +18,8 @@ export class LandingPageComponent implements OnInit {
   constructor(
     private searchService: SearchService, 
     private http: HttpClient, 
-    private keysService: KeysService) { }
+    private keysService: KeysService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.documenuKey = this.keysService.getDocumenuKey();
@@ -26,8 +28,6 @@ export class LandingPageComponent implements OnInit {
 
   //sample https request code from google maps api
   // https://maps.googleapis.com/maps/api/service/output?parameters
-
-
 
   /*this code does not work--throws the following error:
   core.js:5980 ERROR TypeError: Cannot read property 'length' of undefined
@@ -81,6 +81,7 @@ export class LandingPageComponent implements OnInit {
     // })) 
     .subscribe(restaurants => {
       console.log(restaurants);
+      this.router.navigate(['/restaurant-results']);
     }));
   }
   
