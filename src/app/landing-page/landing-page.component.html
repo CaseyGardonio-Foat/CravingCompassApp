@@ -15,9 +15,6 @@
         <li class="nav-item" routerLinkActive="selected">
           <a class="nav-link text-display-nav text-light" routerLink="dish-tionary">Dish-tionary</a>
         </li>
-        <li class="nav-item" routerLinkActive="selected">
-          <a class="nav-link text-display-nav text-light" routerLink="restaurant-results">Search</a>
-        </li>
       </ul>
     </div>
     <!--end: landing page top navigation buttons-->
@@ -32,7 +29,10 @@
         </p>
 
         <!--start: landing page jumbotron form-->
-        <form class="text-light" (ngSubmit)="getRestaurants()" #f="ngForm">
+        <!-- //for use with search.service.ts:
+        <form class="text-light" (ngSubmit)="onSubmitSearch(f)" #f="ngForm"> 
+        -->
+        <form class="text-light" (ngSubmit)="onSubmitForm(f)" #f="ngForm">
           <div class="form-group">
             <label class="sr-only" for="dishName">I know just what I want...</label>
             <input type="text" class="form-control" id="dishName" name="dishName" ngModel required

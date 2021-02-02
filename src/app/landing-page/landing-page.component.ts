@@ -5,6 +5,7 @@ import { KeysService } from '../keys.service';
 import { SearchService } from '../search.service';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-landing-page',
@@ -14,6 +15,7 @@ import { Router } from '@angular/router';
 export class LandingPageComponent implements OnInit {
   @ViewChild('f') searchForm: NgForm;
   documenuKey: string;
+  mapsKey: string;
 
   constructor(
     private searchService: SearchService, 
@@ -23,8 +25,8 @@ export class LandingPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.documenuKey = this.keysService.getDocumenuKey();
+    this.mapsKey = this.keysService.getMapsKey()
   }
-
 
   //sample https request code from google maps api
   // https://maps.googleapis.com/maps/api/service/output?parameters
@@ -41,32 +43,51 @@ export class LandingPageComponent implements OnInit {
     at Observable.subscribe (Observable.js:28)
     at innerSubscribe (innerSubscribe.js:67)
     at MergeMapSubscriber._innerSub (mergeMap.js:57)*/
-  onSubmitSearch() {
+
+  onSubmitSearch(form: NgForm) {
     const searchLat = 40.688072;
     const searchLon = -73.997385;
-    const searchDistance = this.searchForm.value.distance;
-    const searchDishName = this.searchForm.value.dishName;
+    const searchDistance = form.value.distance;
+    const searchDishName = form.value.dishName;
 
     this.searchService.getRestaurants(searchLat, searchLon, searchDistance, searchDishName)
-    .subscribe(results =>{
-      console.log(results);
-    });
+    console.log("search submitted");
+  }
+
+  onSubmitForm(form: NgForm) {
+    const searchLocation = this.searchForm.value.location
+    let searchLat = '';
+    let searchLng = '';
+
+    return this.http
+      .get(`http://www.mapquestapi.com/geocoding/v1/address?key=${this.mapsKey}&location=${searchLocation}`)
+      .subscribe(coords => {
+        console.log(coords);
+      });
   }
 
   //this code works while in this component, but not when outsourced to the searchService (as above onSubmitSearch); check into using a Subject to subscribe in the relevant components (18-261 & 13-176)
-  getRestaurants() {
+  onGetRestaurants(form: NgForm) {
     const searchLocation = '';
     //this will be used to capture the location field, transmit it to google maps geocoding, and retrieve the searchLat and searchLon below
     const searchLat = 40.688072;
     const searchLon = -73.997385;
-    const searchDistance = this.searchForm.value.distance;
-    const searchDishName = this.searchForm.value.dishName;
+    const searchDistance = form.value.distance;
+    const searchDishName = form.value.dishName;
+
+    // this.searchService.getRestaurants(searchLat, searchLon, searchDistance, searchDishName);
 
     console.log(this.http
     .get(`https://api.documenu.com/v2/menuitems/search/geo?lat=${searchLat}&lon=${searchLon}&distance=${searchDistance}&search=${searchDishName}`, 
     {
       headers: new HttpHeaders({'X-API-KEY': this.documenuKey}),
     }) 
+    .subscribe(restaurants => {
+      console.log(restaurants);
+      this.router.navigate(['/restaurant-results']);
+    }));
+  }
+
     // .pipe(map(responseData => {
     //   const responseArray = [];
     //   const restaurantsArray = responseData[4];
@@ -79,12 +100,7 @@ export class LandingPageComponent implements OnInit {
     //   }
     //   console.log(restaurantsArray);
     // })) 
-    .subscribe(restaurants => {
-      console.log(restaurants);
-      this.router.navigate(['/restaurant-results']);
-    }));
-  }
-  
+
   onSubmit() {
     console.log(this.searchForm);
   }
