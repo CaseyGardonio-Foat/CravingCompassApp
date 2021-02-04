@@ -1,25 +1,35 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BrowseCuisineComponent } from './browse-cuisine.component';
+import { CuisineService } from '../cuisine.service';
 
 describe('BrowseCuisineComponent', () => {
   let component: BrowseCuisineComponent;
   let fixture: ComponentFixture<BrowseCuisineComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ BrowseCuisineComponent ]
-    })
-    .compileComponents();
-  });
-
   beforeEach(() => {
-    fixture = TestBed.createComponent(BrowseCuisineComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    TestBed.configureTestingModule({
+      declarations: [ BrowseCuisineComponent ]
+    });
   });
 
-  it('should create', () => {
+  // beforeEach(() => {
+  //   fixture = TestBed.createComponent(BrowseCuisineComponent);
+  //   component = fixture.componentInstance;
+  //   fixture.detectChanges();
+  // });
+
+  it('should create the component', () => {
+    fixture = TestBed.createComponent(BrowseCuisineComponent);
+    component = fixture.debugElement.componentInstance;
     expect(component).toBeTruthy();
+  });
+
+  it('should get cuisines from the cuisine.service on init', () => {
+    fixture = TestBed.createComponent(BrowseCuisineComponent);
+    component = fixture.debugElement.componentInstance;
+    let cuisineService = fixture.debugElement.injector.get(CuisineService);
+    fixture.detectChanges();
+    expect(cuisineService.cuisines.length).toEqual(component.cuisines.length);
   });
 });
