@@ -7,19 +7,27 @@ describe('FooterComponent', () => {
   let fixture: ComponentFixture<FooterComponent>;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
+    TestBed.configureTestingModule({
       declarations: [ FooterComponent ]
     })
-    .compileComponents();
   });
 
-  beforeEach(() => {
+  // beforeEach(() => {
+  //   fixture = TestBed.createComponent(FooterComponent);
+  //   component = fixture.componentInstance;
+  //   fixture.detectChanges();
+  // });
+
+  it('should create the component', () => {
     fixture = TestBed.createComponent(FooterComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
+    component = fixture.debugElement.componentInstance;
     expect(component).toBeTruthy();
   });
+
+  it('should display copyright information', () => {
+    fixture = TestBed.createComponent(FooterComponent);
+    component = fixture.debugElement.componentInstance;
+    let compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('p').textContent).toContain('Copyright 2021, Casey Gardonio-Foat');
+  })
 });
