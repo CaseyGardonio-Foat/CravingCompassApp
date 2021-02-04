@@ -7,19 +7,27 @@ describe('LandingPageComponent', () => {
   let fixture: ComponentFixture<LandingPageComponent>;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
+    TestBed.configureTestingModule({
       declarations: [ LandingPageComponent ]
     })
-    .compileComponents();
   });
 
-  beforeEach(() => {
+  // beforeEach(() => {
+  //   fixture = TestBed.createComponent(LandingPageComponent);
+  //   component = fixture.componentInstance;
+  //   fixture.detectChanges();
+  // });
+
+  it('should create the component', () => {
     fixture = TestBed.createComponent(LandingPageComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
+    component = fixture.debugElement.componentInstance;
     expect(component).toBeTruthy();
   });
+
+  // it('should display the browse-cuisine component', () => {
+  //   fixture = TestBed.createComponent(LandingPageComponent);
+  //   component = fixture.debugElement.componentInstance;
+  //   let compiled = fixture.debugElement.nativeElement;
+  //   expect(compiled.querySelector('browseComponents')).toContain('<app-browse-cuisine></app-browse-cuisine>');
+  // });
 });

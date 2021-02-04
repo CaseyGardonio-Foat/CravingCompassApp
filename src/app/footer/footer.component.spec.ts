@@ -29,5 +29,12 @@ describe('FooterComponent', () => {
     component = fixture.debugElement.componentInstance;
     let compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('p').textContent).toContain('Copyright 2021, Casey Gardonio-Foat');
-  })
+  });
+
+  // it('should contain link to github repo', () => {
+  //   fixture = TestBed.createComponent(FooterComponent);
+  //   component = fixture.debugElement.componentInstance;
+  //   let compiled = fixture.debugElement.nativeElement;
+  //   expect(compiled.querySelector('#gitHub').textContent).toContain('href="https://github.com/CaseyGardonio-Foat/CravingCompassApp"');
+  // });
 });
