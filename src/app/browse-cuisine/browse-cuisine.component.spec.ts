@@ -13,12 +13,6 @@ describe('BrowseCuisineComponent', () => {
     });
   });
 
-  // beforeEach(() => {
-  //   fixture = TestBed.createComponent(BrowseCuisineComponent);
-  //   component = fixture.componentInstance;
-  //   fixture.detectChanges();
-  // });
-
   it('should create the component', () => {
     fixture = TestBed.createComponent(BrowseCuisineComponent);
     component = fixture.debugElement.componentInstance;

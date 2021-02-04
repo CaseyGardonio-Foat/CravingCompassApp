@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DishTionaryComponent } from './dish-tionary.component';
+import { DishService } from '../dish.service';
 
 describe('DishTionaryComponent', () => {
   let component: DishTionaryComponent;
   let fixture: ComponentFixture<DishTionaryComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
+  beforeEach(() => {
+    TestBed.configureTestingModule({
       declarations: [ DishTionaryComponent ]
     })
-    .compileComponents();
   });
 
   beforeEach(() => {
@@ -19,7 +19,15 @@ describe('DishTionaryComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create the component', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should get dishes from the dish.service on init', () => {
+    fixture = TestBed.createComponent(DishTionaryComponent);
+    component = fixture.debugElement.componentInstance;
+    let dishService = fixture.debugElement.injector.get(DishService);
+    fixture.detectChanges();
+    expect(dishService.dishes.length).toEqual(component.dishes.length);
   });
 });
