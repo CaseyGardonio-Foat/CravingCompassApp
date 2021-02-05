@@ -1,4 +1,77 @@
-@import url('./assets/scss/modules/_fonts.scss');
+@import "./sass/_fonts.scss";
+
+/*Custom colors: modified palette based on bootstrap color map from 
+node_modules/bootstrap/scss/_variables.scss*/
+
+// Color system
+
+// $blue:    hsl(214, 71, 86);
+// $indigo:  #6610f2 !default;
+// $purple:  hsl(323, 65, 25);
+// $pink:    #e83e8c !default;
+// $red:     hsl(345, 100, 40);
+// $orange:  hsl(25, 91, 56);
+// $yellow:  #ffc107 !default;
+// $green:   hsl(88, 47, 48);
+// $teal:    #20c997 !default;
+// $cyan:    #17a2b8 !default;
+
+// $colors: () !default;
+// $colors: map-merge(
+//   (
+//     "blue":       $blue,
+//     "indigo":     $indigo,
+//     "purple":     $purple,
+//     "pink":       $pink,
+//     "red":        $red,
+//     "orange":     $orange,
+//     "yellow":     $yellow,
+//     "green":      $green,
+//     "teal":       $teal,
+//     "cyan":       $cyan,
+//     "white":      $white,
+//     "gray":       $gray-600,
+//     "gray-dark":  $gray-800
+//   ),
+//   $colors
+// );
+
+$primary:       hsl(25, 91, 56);
+$secondary:     hsl(323, 65, 25);
+$success:       hsl(88, 47, 48);
+$info:          hsl(214, 71, 86);
+// $warning:       hsl(25,89,73);
+$danger:        hsl(345, 100, 40);
+$light:         hsl(20, 14, 97);
+$dark:          hsl(212, 17, 20);
+
+$theme-colors: () !default;
+$theme-colors: map-merge(
+  (
+    "primary":    $primary,
+    // "secondary":  $secondary,
+    "success":    $success,
+    "info":       $info,
+    // "warning":    $warning,
+    "danger":     $danger,
+    "light":      $light,
+    "dark":       $dark
+  ),
+  $theme-colors
+);
+
+// Links
+//
+// Style anchor elements.
+
+// $link-color:                              theme-color("primary") !default;
+// $link-decoration:                         none !default;
+// $link-hover-color:                        darken($link-color, 15%) !default;
+// $link-hover-decoration:                   underline !default;
+// // Darken percentage for links with `.text-*` class (e.g. `.text-success`)
+// $emphasized-link-hover-darken-percentage: 15% !default;
+
+//Fonts
 
 .text-display-1 {
   font-family: 'Modesto Open InlineFill';
@@ -46,4 +119,6 @@ $font-lg: 20px; */
     font-size: $primary-fs;
     font-weight: $regular;
 } */
+
+@import "node_modules/bootstrap/scss/bootstrap";
 
