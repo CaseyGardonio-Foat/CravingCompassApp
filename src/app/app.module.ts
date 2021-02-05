@@ -63,11 +63,5 @@ import { KeysService } from './keys.service';
   bootstrap: [AppComponent]
 })
 export class AppModule implements OnInit {
-  apiKey: string;
-
-  constructor(private keysService: KeysService){}
-
-  ngOnInit() {
-    this.apiKey = this.keysService.getMapsKey();
-  }
+  ngOnInit() {}
 }

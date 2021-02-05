@@ -7,7 +7,7 @@ import { Cuisine } from '../cuisine.model';
 @Component({
   selector: 'app-browse-cuisine',
   templateUrl: './browse-cuisine.component.html',
-  styleUrls: ['./browse-cuisine.component.css']
+  styleUrls: ['./browse-cuisine.component.scss']
 })
 export class BrowseCuisineComponent implements OnInit {
   @Input() dishArray: Dish[];

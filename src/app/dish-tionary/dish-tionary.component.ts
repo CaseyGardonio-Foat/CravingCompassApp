@@ -4,7 +4,7 @@ import { DishService } from '../dish.service';
 @Component({
   selector: 'app-dish-tionary',
   templateUrl: './dish-tionary.component.html',
-  styleUrls: ['./dish-tionary.component.css']
+  styleUrls: ['./dish-tionary.component.scss']
 })
 export class DishTionaryComponent implements OnInit {
   dishes = [];

@@ -6,7 +6,7 @@ import { KeysService } from 'src/app/keys.service';
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
-  styleUrls: ['./map.component.css']
+  styleUrls: ['./map.component.scss']
 })
 export class MapComponent implements OnInit {
   documenuKey: string;
