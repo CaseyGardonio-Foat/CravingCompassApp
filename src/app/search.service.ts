@@ -5,6 +5,64 @@ import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
 import { RestaurantDetail } from './restaurants/restaurant-detail.model';
 
+
+//geocodeResponse interface copies JSON object returned from MapQuest Geocoding API:
+//https://developer.mapquest.com/documentation/samples/geocoding/v1/address/
+export interface GeocodeResponse {
+  "info": {
+    "statuscode": number,
+    "copyright": {
+      "text": string,
+      "imageUrl": string,
+      "imageAltText": string
+    },
+    "messages": []
+  },
+  "options": {
+    "maxResults": number,
+    "thumbMaps": boolean,
+    "ignoreLatLngInput": boolean
+  },
+  "results": [
+    {
+      "providedLocation": {
+        "location": string
+      },
+      "locations": [
+        {
+          "street": string,
+          "adminArea6": string,
+          "adminArea6Type": string,
+          "adminArea5": string,
+          "adminArea5Type": string,
+          "adminArea4": string,
+          "adminArea4Type": string,
+          "adminArea3": string,
+          "adminArea3Type": string,
+          "adminArea1": string,
+          "adminArea1Type": string,
+          "postalCode": string,
+          "geocodeQualityCode": string,
+          "geocodeQuality": string,
+          "dragPoint": boolean,
+          "sideOfStreet": string,
+          "linkId": string,
+          "unknownInput": string,
+          "type": string,
+          "latLng": {
+            "lat": number,
+            "lng": number
+          },
+          "displayLatLng": {
+            "lat": number,
+            "lng": number
+          }
+        }
+      ]
+    }
+  ]
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -21,16 +79,13 @@ export class SearchService implements OnInit {
     this.documenuKey = this.keysService.getDocumenuKey();
   }
 
-  // getSearchCoordinates() {
-  //   return this.http
-  //   .get(`https://maps.googleapis.com/maps/api/geocoding/json?parameters`,
-  //   {
-  //     headers: new HttpHeaders({: this.mapsKey})
-  //   })
-  //   .subscribe(response=> {
-  //     console.log(response);
-  //   });
-  // }
+  getSearchCoordinates(mapsKey: string, location: string) {
+    return this.http
+    .get<GeocodeResponse>(`http://www.mapquestapi.com/geocoding/v1/address?key=${mapsKey}&location=${location}`)
+    .subscribe(response=> {
+      console.log(response);
+    });
+  }
 
 /*will need to chain the http requests in the order that the information is required:
   -coordinates from GoogleMaps

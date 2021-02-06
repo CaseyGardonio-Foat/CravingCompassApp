@@ -54,16 +54,9 @@ export class LandingPageComponent implements OnInit {
     console.log("search submitted");
   }
 
-  onSubmitForm(form: NgForm) {
-    const searchLocation = this.searchForm.value.location
-    let searchLat = '';
-    let searchLng = '';
-
-    return this.http
-      .get(`http://www.mapquestapi.com/geocoding/v1/address?key=${this.mapsKey}&location=${searchLocation}`)
-      .subscribe(coords => {
-        console.log(coords);
-      });
+  onSubmitForm(searchForm) {
+    const searchLocation = searchForm.value.location;
+    return this.searchService.getSearchCoordinates(this.mapsKey, searchLocation);
   }
 
   //this code works while in this component, but not when outsourced to the searchService (as above onSubmitSearch); check into using a Subject to subscribe in the relevant components (18-261 & 13-176)
