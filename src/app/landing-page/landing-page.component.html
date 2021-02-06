@@ -35,17 +35,19 @@
         <form class="text-light" (ngSubmit)="onSubmitForm(f)" #f="ngForm">
           <div class="form-group">
             <label class="sr-only" for="dishName">I know just what I want...</label>
-            <input type="text" class="form-control" id="dishName" name="dishName" ngModel required
-            placeholder="I know just what I want...">
+            <input type="text" class="form-control text-uppercase" id="dishName" name="dishName" 
+            ngModel required placeholder="I know just what I want...">
           </div>
           
           <div class="form-inline" style="margin-bottom: 1rem;">
             <label class="sr-only" for="location">Where do you want it?</label>
-            <input type="text" class="form-control col-6" id="location" name="location" ngModel required
+            <input type="text" class="form-control col-6 text-uppercase" id="location" name="location" 
+            ngModel required
             placeholder="Where do you want it?">
 
             <label class="sr-only" for="distance">distance</label>
-            <select class="custom-select form-control col-2" id="distance" name="distance" ngModel required>
+            <select class="custom-select form-control col-2" id="distance" name="distance" 
+            ngModel required>
               <option value=".5">.5 mi</option>
               <option value="1">1 mi</option>
               <option selected value="5">5 mi</option>
@@ -54,12 +56,11 @@
             </select>
 
             <label class="sr-only" for="time">When do you want it?</label>
-            <input type="text" class="form-control col-4" id="time" name="time" ngModel
-            placeholder="When do you want it?">
+            <input type="text" class="form-control col-4 text-uppercase"  id="time" name="time" 
+            ngModel placeholder="When do you want it?">
           </div>
 
-          <button class="btn btn-outline-warning btn-block text-display-nav" type="submit"
-          [disabled]='!f.valid' >Let's Go!</button>
+          <button class="btn btn-outline-warning btn-block text-display-nav" style="font-weight: bold;" type="submit" [disabled]='!f.valid' >Let's Go!</button>
         </form>
         <!--end: landing page jumbotron form-->
 

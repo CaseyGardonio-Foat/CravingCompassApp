@@ -1,5 +1,35 @@
 @import "./sass/_fonts.scss";
 
+/*Custom color system: modified theme colors based on bootstrap color map from 
+node_modules/bootstrap/scss/_variables.scss*/
+
+// Color system
+
+$primary:       hsl(25, 91, 56);
+$secondary:     hsl(323, 65, 25);
+$success:       hsl(88, 47, 48);
+$info:          hsl(214, 71, 86);
+$warning:       hsl(30, 100, 65);
+$danger:        hsl(345, 100, 40);
+$light:         hsl(20, 14, 97);
+$dark:          hsl(212, 17, 20);
+$muted:         hsl(213, 6, 70);
+
+$theme-colors: () !default;
+$theme-colors: map-merge(
+  (
+    "primary":    $primary,
+    "secondary":  $secondary,
+    "success":    $success,
+    "info":       $info,
+    "warning":    $warning,
+    "danger":     $danger,
+    "light":      $light,
+    "dark":       $dark
+  ),
+  $theme-colors
+);
+
 //FONTS: 
 //display fonts are custom:
 
@@ -26,34 +56,7 @@ $font-family-sans-serif:      Jost, -apple-system, BlinkMacSystemFont, "Segoe UI
 $font-family-monospace:       SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
 $font-family-base:            $font-family-sans-serif !default;
 
-/*Custom color system: modified theme colors based on bootstrap color map from 
-node_modules/bootstrap/scss/_variables.scss*/
-
-// Color system
-
-$primary:       hsl(25, 91, 56);
-$secondary:     hsl(323, 65, 25);
-$success:       hsl(88, 47, 48);
-$info:          hsl(214, 71, 86);
-$warning:       hsl(30, 100, 65);
-$danger:        hsl(345, 100, 40);
-$light:         hsl(20, 14, 97);
-$dark:          hsl(212, 17, 20);
-
-$theme-colors: () !default;
-$theme-colors: map-merge(
-  (
-    "primary":    $primary,
-    "secondary":  $secondary,
-    "success":    $success,
-    "info":       $info,
-    "warning":    $warning,
-    "danger":     $danger,
-    "light":      $light,
-    "dark":       $dark
-  ),
-  $theme-colors
-);
+$text-muted:                  $muted;
 
 // Links
 //
@@ -96,6 +99,40 @@ $font-lg: 20px; */
     font-size: $primary-fs;
     font-weight: $regular;
 } */
+
+// Components
+//
+// Custom changes to Bootstrap common padding and border radius sizes and more.
+
+$border-radius:               50rem;
+$border-radius-lg:            .3rem !default;
+$border-radius-sm:            .2rem !default;
+
+$rounded-pill:                50rem !default;
+
+$box-shadow-sm:               0 .125rem .25rem rgba($dark, .075);
+$box-shadow:                  0 .5rem 1rem rgba($dark, .15);
+$box-shadow-lg:               0 1rem 3rem rgba($dark, .175);
+
+// Buttons
+//
+// For each of Bootstrap's buttons, define text, background, and border color.
+
+// Allows for customizing button radius independently from global border radius
+$btn-border-radius:           $border-radius !default;
+$btn-border-radius-lg:        $border-radius-lg !default;
+$btn-border-radius-sm:        $border-radius-sm !default;
+
+// $btn-transition:              color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
+
+// Forms
+
+$input-border-radius:                   $border-radius !default;
+$input-border-radius-lg:                $border-radius-lg !default;
+$input-border-radius-sm:                $border-radius-sm !default;
+
+$input-placeholder-color:               $muted;
+// $input-plaintext-color:                 $body-color !default;
 
 @import "node_modules/bootstrap/scss/bootstrap";
 
