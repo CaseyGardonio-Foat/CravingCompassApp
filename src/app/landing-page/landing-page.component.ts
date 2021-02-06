@@ -44,15 +44,15 @@ export class LandingPageComponent implements OnInit {
     at innerSubscribe (innerSubscribe.js:67)
     at MergeMapSubscriber._innerSub (mergeMap.js:57)*/
 
-  onSubmitSearch(form: NgForm) {
-    const searchLat = 40.688072;
-    const searchLon = -73.997385;
-    const searchDistance = form.value.distance;
-    const searchDishName = form.value.dishName;
+  // onSubmitSearch(form: NgForm) {
+  //   const searchLat = 40.688072;
+  //   const searchLon = -73.997385;
+  //   const searchDistance = form.value.distance;
+  //   const searchDishName = form.value.dishName;
 
-    this.searchService.getRestaurants(searchLat, searchLon, searchDistance, searchDishName)
-    console.log("search submitted");
-  }
+  //   this.searchService.getRestaurants(searchLat, searchLon, searchDistance, searchDishName)
+  //   console.log("search submitted");
+  // }
 
   onSubmitForm(searchForm) {
     const searchLocation = searchForm.value.location;

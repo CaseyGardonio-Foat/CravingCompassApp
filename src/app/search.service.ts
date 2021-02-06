@@ -72,6 +72,9 @@ export class SearchService implements OnInit {
   mapsKey: string;
   documenuKey: string;
 
+  searchLat: number;
+  searchLng: number;
+
   constructor(private keysService: KeysService, private http: HttpClient, private router: Router) { }
 
   ngOnInit() {
@@ -84,7 +87,10 @@ export class SearchService implements OnInit {
     .get<GeocodeResponse>(`http://www.mapquestapi.com/geocoding/v1/address?key=${mapsKey}&location=${location}`)
     .subscribe(response=> {
       console.log(response);
-    });
+      this.searchLat = response.results[0].locations[0].latLng.lat;
+      this.searchLng = response.results[0].locations[0].latLng.lng;
+      console.log(this.searchLat, this.searchLng);
+    })
   }
 
 /*will need to chain the http requests in the order that the information is required:
