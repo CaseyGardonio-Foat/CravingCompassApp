@@ -60,17 +60,20 @@ export class LandingPageComponent implements OnInit {
     const searchDistance = this.locationForm.value.distance;
     const searchDish = dishSearch.value.dish;
 
-    // this.searchService.getRestaurants(searchLat, searchLng, searchDistance, searchDish);
+    console.log(searchDish);
 
-    console.log(this.http
-    .get(`https://api.documenu.com/v2/menuitems/search/geo?lat=${searchLat}&lon=${searchLng}&distance=${searchDistance}&search=${searchDish}`, 
-    {
-      headers: new HttpHeaders({'X-API-KEY': this.documenuKey}),
-    }) 
-    .subscribe(restaurants => {
-      console.log(restaurants);
-      this.router.navigate(['/restaurant-results']);
-    }));
+    this.searchService.getRestaurants(searchLat, searchLng, searchDistance, searchDish);
+    // this.router.navigate(['/restaurant-results']);
+
+    // console.log(this.http
+    // .get(`https://api.documenu.com/v2/menuitems/search/geo?lat=${searchLat}&lon=${searchLng}&distance=${searchDistance}&search=${searchDish}`, 
+    // {
+    //   headers: new HttpHeaders({'X-API-KEY': this.documenuKey}),
+    // }) 
+    // .subscribe(restaurants => {
+    //   console.log(restaurants);
+    //   this.router.navigate(['/restaurant-results']);
+    // }));
   }
 
     // .pipe(map(responseData => {

@@ -3,9 +3,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { KeysService } from './keys.service';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
+import {Restaurant } from './restaurant.model';
 import { RestaurantDetail } from './restaurants/restaurant-detail.model';
 
-//geocodeResponse interface copies JSON object returned from MapQuest Geocoding API:
+//GeocodeResponse interface copies JSON object returned from MapQuest Geocoding API:
 //https://developer.mapquest.com/documentation/samples/geocoding/v1/address/
 export interface GeocodeResponse {
   "info": {
@@ -62,6 +63,51 @@ export interface GeocodeResponse {
   ]
 }
 
+//RestaurantResponse interface copies JSON object returned from Documenu Search Menu Items Geo API:
+//https://documenu.com/docs#get_search_menu_items_geo
+export interface RestaurantsResponse {
+  "totalResults": number,
+  "page": number,
+  "total_pages": number,
+  "more_pages": boolean,
+  "data": [
+    {
+      "address": {
+        "city": string,
+        "state": string,
+        "postal_code": string,
+        "street": string,
+        "formatted": string,
+      },
+      "cuisines": string[],
+      "geo": {
+        "lat": number,
+        "lon": number,
+      },
+      "item_id": string,
+      "menu_item_description": string,
+      "menu_item_name": string,
+      "menu_item_price": number,
+      "menu_item_pricing": [
+        {
+          "price": number,
+          "currency": string,
+          "priceString": string,
+        }
+      ],
+      "price_range": string,
+      "restaurant_hours": string,
+      "restaurant_id": number,
+      "restaurant_name": string,
+      "restaurant_phone": string,
+      "subsection": string,
+      "subsection_description": string,
+      "menus": [],
+    }
+  ],
+  "numResults": number
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -69,7 +115,7 @@ export class SearchService implements OnInit {
   searchResults = new Subject();
 
   mapsKey: string = "FLvwrZnG54V5dtE8YR0kxPwT3sr0GFUC";
-  documenuKey: string;
+  documenuKey: string = "23bf5213c9650586e04996e21ead58f6";
 
   searchDish: string;
   searchLocation: string
@@ -77,6 +123,9 @@ export class SearchService implements OnInit {
 
   searchLat: number;
   searchLng: number;
+
+  restaurantResponse: RestaurantsResponse;
+  restaurantResults: [];
 
   constructor(private keysService: KeysService, private http: HttpClient, private router: Router) { }
 
@@ -111,16 +160,26 @@ export class SearchService implements OnInit {
     searchLat = this.searchLat;
     searchLng = this.searchLng;
     searchDistance = this.searchDistance;
-    searchDish = this.searchDish;
+    // searchDish = this.searchDish;
 
     return this.http
-      .get(`https://api.documenu.com/v2/menuitems/search/geo?lat=${searchLat}&lon=${searchLng}&distance=${searchDistance}&search=${searchDish}`, 
+      .get<RestaurantsResponse>(`https://api.documenu.com/v2/menuitems/search/geo?lat=${searchLat}&lon=${searchLng}&distance=${searchDistance}&search=${searchDish}`, 
         {
           headers: new HttpHeaders({'X-API-KEY': this.documenuKey
         })
       })
       .subscribe(restaurants => {
-        console.log(restaurants);
+        //API returns JSON object of type RestaurantResults; 
+        //in this is a property, data, that holds an array of restaurant results
+        //iterate through this array and push each object into a new array, restaurantResults[]
+        // console.log(restaurantResponse);
+        this.restaurantResponse = restaurants;
+        console.log(this.restaurantResponse.data[0]);
+        // for(let result of this.restaurantResponse.data) {
+        //   console.log(result);
+        // }
+        // this.restaurantResults = restaurantResponse;
+
       }
     );
   };
