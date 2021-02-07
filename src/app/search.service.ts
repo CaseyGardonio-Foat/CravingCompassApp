@@ -5,6 +5,7 @@ import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
 import {Restaurant } from './restaurant.model';
 import { RestaurantDetail } from './restaurants/restaurant-detail.model';
+import { CuisineService } from './cuisine.service';
 
 //GeocodeResponse interface copies JSON object returned from MapQuest Geocoding API:
 //https://developer.mapquest.com/documentation/samples/geocoding/v1/address/
@@ -108,6 +109,40 @@ export interface RestaurantsResponse {
   "numResults": number
 }
 
+//RestaurantResponseBrowse interface copies JSON object returned from Documenu Restaurants Geo with Cuisine Filter API:
+//https://documenu.com/docs#cuisine_filters
+export interface RestaurantsResponseBrowse {
+  "totalResults": number,
+  "page": number,
+  "total_pages": number,
+  "more_pages": boolean,
+  "data": [
+    { 
+      "restaurant_name": string,
+      "restaurant_phone": string,
+      "restaurant_website": string,
+      "hours": string,
+      "price_range": string,
+      "restaurant_id": number,
+      "cuisines": string[],
+      "address": {
+        "city": string,
+        "state": string,
+        "postal_code": string,
+        "street": string,
+        "formatted": string
+      },
+      "geo":{
+        "lat": number,
+        "lon": number,
+      },
+      "menus": string[],
+      "last_updated": string,
+    }
+  ],
+  "numResults": number
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -117,6 +152,7 @@ export class SearchService implements OnInit {
   mapsKey: string = "FLvwrZnG54V5dtE8YR0kxPwT3sr0GFUC";
   documenuKey: string = "23bf5213c9650586e04996e21ead58f6";
 
+  selectedCuisine: string;
   searchDish: string;
   searchLocation: string
   searchDistance: number;
@@ -127,7 +163,11 @@ export class SearchService implements OnInit {
   restaurantResponse: RestaurantsResponse;
   restaurantResults: any[];
 
-  constructor(private keysService: KeysService, private http: HttpClient, private router: Router) { }
+  constructor(
+    private keysService: KeysService, 
+    private http: HttpClient, 
+    private router: Router,
+    private cuisineService: CuisineService) { }
 
   ngOnInit() {
     // this.mapsKey = this.keysService.getMapsKey();
@@ -155,13 +195,15 @@ export class SearchService implements OnInit {
     })
   }
 
-//the following method for making a request from the Documenu API successfully submits from landing-page but not when outsourced to this service; see landing-page.component.ts for more info
+  /*search for restaurants by user-input dish*/
   getRestaurants(searchLat: number, searchLng: number, searchDistance:number, searchDish: string) {
+    //parameters for search, in addition to searchDish, which gets passed to method directly from the component that calls it
     searchLat = this.searchLat;
     searchLng = this.searchLng;
     searchDistance = this.searchDistance;
+
+    //retrieves searched dish name so restaurants-list can display on results list
     this.searchDish = searchDish;
-    // searchDish = this.searchDish;
 
     return this.http
       .get<RestaurantsResponse>(`https://api.documenu.com/v2/menuitems/search/geo?lat=${searchLat}&lon=${searchLng}&distance=${searchDistance}&search=${searchDish}`, 
@@ -170,33 +212,45 @@ export class SearchService implements OnInit {
         })
       })
       .subscribe(restaurants => {
-        //API returns JSON object of type RestaurantResults; 
-        //in this is a property, data, that holds an array of restaurant results
-        //iterate through this array and push each object into a new array, restaurantResults[]
-        
-        // console.log(restaurantResponse);
+        //API returns JSON object of type RestaurantResults, which contains restaurant info in the "data" array
         this.restaurantResponse = restaurants;
         this.restaurantResults = this.restaurantResponse.data;
-        // for(let item of this.restaurantResponse.data) {
-        //   // this.restaurantResults.push(new Restaurant(
-        //   //   item.restaurant_name;
-        //   //   item.address.formatted; 
-        //   //   item.restaurant_phone;
-        //   //   item.menu_item_name;
-        //   //   item.menu_item_description;
-        //   //   item.menu_item_price;
-        //   //   item.restaurant_hours
-        //   // );
-        //   this.restaurantResults.push(item);
-        // };
+       
         console.log(this.restaurantResults);
         this.router.navigate(['/restaurant-results']);
       }
     );
   };
 
+  /*search for restaurants by user-input location and browse-cusine or browse-type*/
+  getRestaurantsBrowse(searchLat: number, searchLng: number, searchDistance:number, selectedCuisine: string) {
+    //parameters for search, in addition to selectedCuisine, which gets passed to method directly from the component that calls it?
+    searchLat = this.searchLat;
+    searchLng = this.searchLng;
+    searchDistance = this.searchDistance;
+
+    //retrieves searched dish name so restaurants-list can display on results list
+    this.selectedCuisine = selectedCuisine;
+
+    return this.http
+      .get<RestaurantsResponse>(`https://api.documenu.com/v2/restaurants/search/geo?lat=${searchLat}&lon=${searchLng}&distance=${searchDistance}&cuisine=${this.selectedCuisine}`, 
+        {
+          headers: new HttpHeaders({'X-API-KEY': this.documenuKey
+        })
+      })
+      .subscribe(restaurants => {
+        //API returns JSON object of type RestaurantResults, which contains restaurant info in the "data" array
+        this.restaurantResponse = restaurants;
+        this.restaurantResults = this.restaurantResponse.data;
+       
+        console.log(this.restaurantResults);
+        this.router.navigate(['/restaurant-results']);
+      }
+    );
+  };
+
+  /*sends current restaurantResults array to restaurant-list component*/
   getRestaurantResults() {
     return this.restaurantResults;
   };
-
 }

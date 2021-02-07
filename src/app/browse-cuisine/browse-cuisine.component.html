@@ -31,7 +31,8 @@
     </div>
   </div>
   <div class="row text-center my-5" *ngIf="selectedContinentRegions.length > -1">
-    <div *ngFor="let region of selectedContinentRegions" class="col-md-2" style="cursor: pointer;">
+    <div *ngFor="let region of selectedContinentRegions" class="col-md-2" style="cursor: pointer;" 
+    (click)="onSelectCuisine(region.name)">
       <img href="#" src='{{ region.imagePath }}' style="height: 75px" class="mb-3">
       <h5 class="font-weight-light">{{ region.name }}</h5>
     </div>

@@ -3,6 +3,7 @@ import { DishService } from '../dish.service';
 import { Dish } from '../dish.model';
 import { CuisineService } from '../cuisine.service';
 import { Cuisine } from '../cuisine.model';
+import { SearchService } from '../search.service';
 
 @Component({
   selector: 'app-browse-cuisine',
@@ -15,7 +16,10 @@ export class BrowseCuisineComponent implements OnInit {
   selectedContinentRegions: Cuisine[] = [];
   selectedRegionalCuisines: Cuisine[] = []
 
-  constructor(private dishService: DishService, private cuisineService: CuisineService) { }
+  constructor(
+    private dishService: DishService, 
+    private cuisineService: CuisineService,
+    private searchService: SearchService) { }
 
   ngOnInit(): void {
     this.cuisines = this.cuisineService.getAllCuisines(); 
@@ -42,6 +46,15 @@ export class BrowseCuisineComponent implements OnInit {
   //   this.selectedRegionalCuisines = this.cuisineService.selectedCuisines;
   //   console.log(this.selectedRegionalCuisines)
   // }
+  
+  onSelectCuisine(region: string) {
+    const searchLat = this.searchService.searchLat;
+    const searchLng = this.searchService.searchLng;
+    const searchDistance = this.searchService.searchDistance;
+    const selectedCuisine = region;
 
+    console.log(selectedCuisine);
+    this.searchService.getRestaurantsBrowse(searchLat, searchLng, searchDistance, selectedCuisine)
+  }
 
 }
