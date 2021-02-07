@@ -1,1 +1,14 @@
-<h1 class="text-display-nav">Restaurants-list goes here!</h1>
+<h1 *ngIf="restaurantsList.length===0" class="text-display-nav">Sorry, nobody offers {{searchDish}} near you</h1>
+<h1 class="text-display-nav">{{ searchDish }} near You!</h1>
+<ul class="list-unstyled" *ngIf="restaurantsList.length > -1">
+  <li *ngFor="let restaurant of restaurantsList" style="cursor: pointer;">
+    <div class="text-display-nav">{{restaurant.restaurant_name}}</div>
+    <div>{{restaurant.address.formatted}}</div>
+    <div>{{restaurant.restaurant_phone}}</div>
+    <div>{{restaurant.menu_item_name}}</div>
+    <div>{{restaurant.menu_item_description}}</div>
+    <div>{{restaurant.menu_item_price}}</div>
+    <hr>
+  </li>
+</ul>
+

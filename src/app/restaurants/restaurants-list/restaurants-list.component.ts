@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RestaurantDetail } from '../restaurant-detail.model';
+import { SearchService } from '../../search.service';
 
 @Component({
   selector: 'app-restaurants-list',
@@ -7,11 +8,14 @@ import { RestaurantDetail } from '../restaurant-detail.model';
   styleUrls: ['./restaurants-list.component.scss']
 })
 export class RestaurantsListComponent implements OnInit {
-  restaurantsList: RestaurantDetail[]
+  restaurantsList: any[];
+  searchDish: string;
 
-  constructor() { }
+  constructor(private searchService: SearchService) { }
 
   ngOnInit(): void {
+    this.searchDish = this.searchService.searchDish;
+    this.restaurantsList = this.searchService.getRestaurantResults();
   }
 
 }

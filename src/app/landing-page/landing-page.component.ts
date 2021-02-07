@@ -3,7 +3,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { KeysService } from '../keys.service';
 import { SearchService } from '../search.service';
-import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
@@ -52,7 +51,7 @@ export class LandingPageComponent implements OnInit {
     // this.userLng = this.searchService.searchLng;
   }
 
-  //this code works while in this component, but not when outsourced to the searchService (as above onSubmitSearch); check into using a Subject to subscribe in the relevant components (18-261 & 13-176)
+  //this method searches for the dish entered into the form using the search.service getRestaurants() method; n.b. the getRestaurants() method redirects to the results page.
   onSearchRestaurants(dishSearch) {
     //this will be used to capture the location field, transmit it to google maps geocoding, and retrieve the searchLat and searchLon below
     const searchLat = this.searchService.searchLat;
@@ -76,21 +75,8 @@ export class LandingPageComponent implements OnInit {
     // }));
   }
 
-    // .pipe(map(responseData => {
-    //   const responseArray = [];
-    //   const restaurantsArray = responseData[4];
-      
-    //   for(let key in responseData) {
-    //     responseArray.push({...responseData[key], id: key});
-    //   }
-    //   for(let restaurantObject in responseArray[4]){
-    //     restaurantsArray.push(restaurantObject);
-    //   }
-    //   console.log(restaurantsArray);
-    // })) 
-
-  onSubmit() {
-    console.log(this.locationForm);
-  }
+  // onSubmit() {
+  //   console.log(this.locationForm);
+  // }
 
 }

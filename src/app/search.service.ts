@@ -125,7 +125,7 @@ export class SearchService implements OnInit {
   searchLng: number;
 
   restaurantResponse: RestaurantsResponse;
-  restaurantResults: [];
+  restaurantResults: any[];
 
   constructor(private keysService: KeysService, private http: HttpClient, private router: Router) { }
 
@@ -160,6 +160,7 @@ export class SearchService implements OnInit {
     searchLat = this.searchLat;
     searchLng = this.searchLng;
     searchDistance = this.searchDistance;
+    this.searchDish = searchDish;
     // searchDish = this.searchDish;
 
     return this.http
@@ -172,56 +173,30 @@ export class SearchService implements OnInit {
         //API returns JSON object of type RestaurantResults; 
         //in this is a property, data, that holds an array of restaurant results
         //iterate through this array and push each object into a new array, restaurantResults[]
+        
         // console.log(restaurantResponse);
         this.restaurantResponse = restaurants;
-        console.log(this.restaurantResponse.data[0]);
-        // for(let result of this.restaurantResponse.data) {
-        //   console.log(result);
-        // }
-        // this.restaurantResults = restaurantResponse;
-
+        this.restaurantResults = this.restaurantResponse.data;
+        // for(let item of this.restaurantResponse.data) {
+        //   // this.restaurantResults.push(new Restaurant(
+        //   //   item.restaurant_name;
+        //   //   item.address.formatted; 
+        //   //   item.restaurant_phone;
+        //   //   item.menu_item_name;
+        //   //   item.menu_item_description;
+        //   //   item.menu_item_price;
+        //   //   item.restaurant_hours
+        //   // );
+        //   this.restaurantResults.push(item);
+        // };
+        console.log(this.restaurantResults);
+        this.router.navigate(['/restaurant-results']);
       }
     );
   };
-  
-  // getRestaurants() {
-  //   const searchLocation = '';
 
-  //   const searchLat = 40.688072;
-  //   const searchLon = -73.997385;
-  //   const searchDistance = this.searchForm.value.distance;
-  //   const searchDishName = this.searchForm.value.dishName;
-
-    // console.log(this.http
-    // .get(`https://api.documenu.com/v2/menuitems/search/geo?lat=${searchLat}&lon=${searchLon}&distance=${searchDistance}&search=${searchDishName}`, 
-    // {
-    //   headers: new HttpHeaders({'X-API-KEY': this.documenuKey}),
-    // }) 
-    // .pipe(map(responseData => {
-    //   const responseArray = [];
-    //   const restaurantsArray = responseData[4];
-      
-    //   for(let key in responseData) {
-    //     responseArray.push({...responseData[key], id: key});
-    //   }
-    //   for(let restaurantObject in responseArray[4]){
-    //     restaurantsArray.push(restaurantObject);
-    //   }
-    //   console.log(restaurantsArray);
-    // })) 
-  //   .subscribe(restaurants => {
-  //     console.log(restaurants);
-  //     this.router.navigate(['/restaurant-results']);
-  //   }));
-  // }
-
-  // extractRestaurantData(
-  //   name: string,
-  //   address: string,
-  //   website: string,
-  //   openingHours: string,
-  //   ) {}
-  //   const restaurant = new RestaurantDetail(name, address, website, openingHours);
-  // }
+  getRestaurantResults() {
+    return this.restaurantResults;
+  };
 
 }
