@@ -13,9 +13,13 @@ import { Observable } from 'rxjs';
   styleUrls: ['./landing-page.component.scss']
 })
 export class LandingPageComponent implements OnInit {
-  @ViewChild('f') searchForm: NgForm;
+  @ViewChild('locationForm') locationForm: NgForm;
+  @ViewChild('dishSearch') dishSearch: NgForm;
   documenuKey: string;
   mapsKey: string;
+
+  userLat: number;
+  userLng: number;
 
   constructor(
     private searchService: SearchService, 
@@ -28,22 +32,6 @@ export class LandingPageComponent implements OnInit {
     this.mapsKey = this.keysService.getMapsKey()
   }
 
-  //sample https request code from google maps api
-  // https://maps.googleapis.com/maps/api/service/output?parameters
-
-  /*this code does not work--throws the following error:
-  core.js:5980 ERROR TypeError: Cannot read property 'length' of undefined
-    at http.js:105
-    at Array.forEach (<anonymous>)
-    at HttpHeaders.lazyInit (http.js:99)
-    at HttpHeaders.init (http.js:203)
-    at HttpHeaders.forEach (http.js:270)
-    at Observable._subscribe (http.js:1589)
-    at Observable._trySubscribe (Observable.js:42)
-    at Observable.subscribe (Observable.js:28)
-    at innerSubscribe (innerSubscribe.js:67)
-    at MergeMapSubscriber._innerSub (mergeMap.js:57)*/
-
   // onSubmitSearch(form: NgForm) {
   //   const searchLat = 40.688072;
   //   const searchLon = -73.997385;
@@ -54,25 +42,28 @@ export class LandingPageComponent implements OnInit {
   //   console.log("search submitted");
   // }
 
-  onSubmitForm(searchForm) {
-    // return this.searchService.getSearchCoordinates(this.mapsKey, searchLocation);
-    this.searchService.storeUserSearch(searchForm.value.dish, searchForm.value.location, searchForm.value.distance, searchForm.value.time);
-    this.searchService.getSearchCoordinates(this.mapsKey, searchForm.value.location);
+
+  /*this method gets and stores the coordinates for the user's location so they can be passed as queries using search or browse*/
+  onSubmitLocationForm(locationForm) {
+    console.log(this.locationForm);
+    this.searchService.storeUserLocation(locationForm.value.location, locationForm.value.distance);
+    this.searchService.getSearchCoordinates(this.mapsKey, locationForm.value.location);
+    // this.userLat = this.searchService.searchLat;
+    // this.userLng = this.searchService.searchLng;
   }
 
   //this code works while in this component, but not when outsourced to the searchService (as above onSubmitSearch); check into using a Subject to subscribe in the relevant components (18-261 & 13-176)
-  onGetRestaurants(form: NgForm) {
-    const searchLocation = '';
+  onSearchRestaurants(dishSearch) {
     //this will be used to capture the location field, transmit it to google maps geocoding, and retrieve the searchLat and searchLon below
-    const searchLat = 40.688072;
-    const searchLon = -73.997385;
-    const searchDistance = form.value.distance;
-    const searchDishName = form.value.dishName;
+    const searchLat = this.searchService.searchLat;
+    const searchLng = this.searchService.searchLng;
+    const searchDistance = this.locationForm.value.distance;
+    const searchDish = dishSearch.value.dish;
 
-    // this.searchService.getRestaurants(searchLat, searchLon, searchDistance, searchDishName);
+    // this.searchService.getRestaurants(searchLat, searchLng, searchDistance, searchDish);
 
     console.log(this.http
-    .get(`https://api.documenu.com/v2/menuitems/search/geo?lat=${searchLat}&lon=${searchLon}&distance=${searchDistance}&search=${searchDishName}`, 
+    .get(`https://api.documenu.com/v2/menuitems/search/geo?lat=${searchLat}&lon=${searchLng}&distance=${searchDistance}&search=${searchDish}`, 
     {
       headers: new HttpHeaders({'X-API-KEY': this.documenuKey}),
     }) 
@@ -96,7 +87,7 @@ export class LandingPageComponent implements OnInit {
     // })) 
 
   onSubmit() {
-    console.log(this.searchForm);
+    console.log(this.locationForm);
   }
 
 }

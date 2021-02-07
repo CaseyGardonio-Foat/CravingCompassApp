@@ -74,7 +74,6 @@ export class SearchService implements OnInit {
   searchDish: string;
   searchLocation: string
   searchDistance: number;
-  searchTime: string;
 
   searchLat: number;
   searchLng: number;
@@ -86,15 +85,11 @@ export class SearchService implements OnInit {
     this.documenuKey = this.keysService.getDocumenuKey();
   }
 
-  storeUserSearch(searchedDish: string, searchedLocation: string, searchedDistance: number, searchedTime: string) {
-    this.searchDish = searchedDish;
+  storeUserLocation(searchedLocation: string, searchedDistance: number) {
     this.searchLocation = searchedLocation;
     this.searchDistance = searchedDistance;
-    this.searchTime = searchedTime;
 
     this.getSearchCoordinates(this.mapsKey, searchedLocation);
-
-    this.getRestaurants(this.searchLat, this.searchLng, this.searchDistance, this.searchDish);
   }
 
   /*Get coordinates for user's location from MapQuest GeoCoding API: */
@@ -107,8 +102,7 @@ export class SearchService implements OnInit {
       // console.log(response);
       this.searchLat = response.results[0].locations[0].latLng.lat;
       this.searchLng = response.results[0].locations[0].latLng.lng;
-      // console.log(this.searchDish, this.searchLocation, this.searchTime);
-      // console.log(this.searchLat, this.searchLng);
+      console.log(this.searchLocation, this.searchLat, this.searchLng);
     })
   }
 
@@ -118,7 +112,7 @@ export class SearchService implements OnInit {
     searchLng = this.searchLng;
     searchDistance = this.searchDistance;
     searchDish = this.searchDish;
-    
+
     return this.http
       .get(`https://api.documenu.com/v2/menuitems/search/geo?lat=${searchLat}&lon=${searchLng}&distance=${searchDistance}&search=${searchDish}`, 
         {
@@ -127,7 +121,6 @@ export class SearchService implements OnInit {
       })
       .subscribe(restaurants => {
         console.log(restaurants);
-        this.router.navigate(['/restaurant-results']);
       }
     );
   };
