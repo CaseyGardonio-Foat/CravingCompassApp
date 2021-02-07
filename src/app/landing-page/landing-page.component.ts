@@ -55,8 +55,9 @@ export class LandingPageComponent implements OnInit {
   // }
 
   onSubmitForm(searchForm) {
-    const searchLocation = searchForm.value.location;
-    return this.searchService.getSearchCoordinates(this.mapsKey, searchLocation);
+    // return this.searchService.getSearchCoordinates(this.mapsKey, searchLocation);
+    this.searchService.storeUserSearch(searchForm.value.dish, searchForm.value.location, searchForm.value.distance, searchForm.value.time);
+    this.searchService.getSearchCoordinates(this.mapsKey, searchForm.value.location);
   }
 
   //this code works while in this component, but not when outsourced to the searchService (as above onSubmitSearch); check into using a Subject to subscribe in the relevant components (18-261 & 13-176)

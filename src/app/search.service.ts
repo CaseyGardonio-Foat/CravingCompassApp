@@ -5,7 +5,6 @@ import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
 import { RestaurantDetail } from './restaurants/restaurant-detail.model';
 
-
 //geocodeResponse interface copies JSON object returned from MapQuest Geocoding API:
 //https://developer.mapquest.com/documentation/samples/geocoding/v1/address/
 export interface GeocodeResponse {
@@ -69,8 +68,13 @@ export interface GeocodeResponse {
 export class SearchService implements OnInit {
   searchResults = new Subject();
 
-  mapsKey: string;
+  mapsKey: string = "FLvwrZnG54V5dtE8YR0kxPwT3sr0GFUC";
   documenuKey: string;
+
+  searchDish: string;
+  searchLocation: string
+  searchDistance: number;
+  searchTime: string;
 
   searchLat: number;
   searchLng: number;
@@ -78,32 +82,45 @@ export class SearchService implements OnInit {
   constructor(private keysService: KeysService, private http: HttpClient, private router: Router) { }
 
   ngOnInit() {
-    this.mapsKey = this.keysService.getMapsKey();
+    // this.mapsKey = this.keysService.getMapsKey();
     this.documenuKey = this.keysService.getDocumenuKey();
   }
 
+  storeUserSearch(searchedDish: string, searchedLocation: string, searchedDistance: number, searchedTime: string) {
+    this.searchDish = searchedDish;
+    this.searchLocation = searchedLocation;
+    this.searchDistance = searchedDistance;
+    this.searchTime = searchedTime;
+
+    this.getSearchCoordinates(this.mapsKey, searchedLocation);
+
+    this.getRestaurants(this.searchLat, this.searchLng, this.searchDistance, this.searchDish);
+  }
+
+  /*Get coordinates for user's location from MapQuest GeoCoding API: */
   getSearchCoordinates(mapsKey: string, location: string) {
+    mapsKey = this.mapsKey;
+    location = this.searchLocation;
     return this.http
     .get<GeocodeResponse>(`http://www.mapquestapi.com/geocoding/v1/address?key=${mapsKey}&location=${location}`)
     .subscribe(response=> {
-      console.log(response);
+      // console.log(response);
       this.searchLat = response.results[0].locations[0].latLng.lat;
       this.searchLng = response.results[0].locations[0].latLng.lng;
-      console.log(this.searchLat, this.searchLng);
+      // console.log(this.searchDish, this.searchLocation, this.searchTime);
+      // console.log(this.searchLat, this.searchLng);
     })
   }
 
-/*will need to chain the http requests in the order that the information is required:
-  -coordinates from GoogleMaps
-  -restaurant info from Documenu
-  -restaurant info from GoogleMaps
-*/
-
 //the following method for making a request from the Documenu API successfully submits from landing-page but not when outsourced to this service; see landing-page.component.ts for more info
-  getRestaurants(searchLat, searchLon, searchDistance, searchDishName) {
-  //this will be used to capture the location field, transmit it to google maps geocoding, and retrieve the searchLat and searchLon below
+  getRestaurants(searchLat: number, searchLng: number, searchDistance:number, searchDish: string) {
+    searchLat = this.searchLat;
+    searchLng = this.searchLng;
+    searchDistance = this.searchDistance;
+    searchDish = this.searchDish;
+    
     return this.http
-      .get(`https://api.documenu.com/v2/menuitems/search/geo?lat=${searchLat}&lon=${searchLon}&distance=${searchDistance}&search=${searchDishName}`, 
+      .get(`https://api.documenu.com/v2/menuitems/search/geo?lat=${searchLat}&lon=${searchLng}&distance=${searchDistance}&search=${searchDish}`, 
         {
           headers: new HttpHeaders({'X-API-KEY': this.documenuKey
         })
