@@ -41,16 +41,17 @@ export class MapComponent implements OnInit {
     this.restaurantAddressesString = restaurantAddressesString;
   };
 
-  getMap() {
-    let mapsKey = this.mapsKey;
-    let lat = this.lat;
-    let lng = this.lng;
-    return this.http
-    .get(`https://www.mapquestapi.com/staticmap/v5/map?key=${mapsKey}&locations=${lat},${lng}|circle-sm-f05423&zoom=14&size=350,225@2x`)
-    .subscribe(mapResult=> {
-      this.map = mapResult;
-      console.log('map request sent');
-    })
-  }
+  /*calling the MapQuest api directly from the html template works better than making the call from a method here*/
+  // getMap() {
+  //   let mapsKey = this.mapsKey;
+  //   let lat = this.lat;
+  //   let lng = this.lng;
+  //   return this.http
+  //   .get(`https://www.mapquestapi.com/staticmap/v5/map?key=${mapsKey}&locations=${lat},${lng}|circle-sm-f05423&zoom=14&size=350,225@2x`)
+  //   .subscribe(mapResult=> {
+  //     this.map = mapResult;
+  //     console.log('map request sent');
+  //   })
+  // }
 
 }
