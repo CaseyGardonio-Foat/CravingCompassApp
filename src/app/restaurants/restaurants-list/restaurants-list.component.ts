@@ -10,11 +10,13 @@ import { SearchService } from '../../search.service';
 export class RestaurantsListComponent implements OnInit {
   restaurantsList: any[];
   searchDish: string;
+  selectedCuisine: string;
 
   constructor(private searchService: SearchService) { }
 
   ngOnInit(): void {
     this.searchDish = this.searchService.searchDish;
+    this.selectedCuisine = this.searchService.selectedCuisine
     this.restaurantsList = this.searchService.getRestaurantResults();
   }
 
