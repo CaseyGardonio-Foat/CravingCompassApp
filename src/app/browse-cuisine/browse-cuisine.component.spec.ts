@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { BrowseCuisineComponent } from './browse-cuisine.component';
 import { CuisineService } from '../cuisine.service';
@@ -9,7 +11,8 @@ describe('BrowseCuisineComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ BrowseCuisineComponent ]
+      declarations: [ BrowseCuisineComponent ],
+      imports: [HttpClientTestingModule, RouterTestingModule]
     });
   });
 
