@@ -50,10 +50,10 @@
             </select>
           </div>
 
-          <button class="btn btn-outline-warning btn-block text-display-nav" style="font-weight: bold; margin-bottom: 10px;" type="submit" [disabled]='!locationForm.valid' >Next</button>
+          <button *ngIf="!coordsRetrieved" class="btn btn-outline-warning btn-block text-display-nav" style="font-weight: bold; margin-bottom: 10px;" type="submit" [disabled]='!locationForm.valid' >Next</button>
         </form>
 
-        <form class="text-light" (ngSubmit)="onSearchRestaurants(dishSearch)" #dishSearch="ngForm">
+        <form *ngIf="coordsRetrieved" class="text-light" (ngSubmit)="onSearchRestaurants(dishSearch)" #dishSearch="ngForm">
           <div class="form-group">
             <label class="sr-only" for="dish">I know just what I want...</label>
             <input type="text" class="form-control text-uppercase" id="dish" name="dish" 

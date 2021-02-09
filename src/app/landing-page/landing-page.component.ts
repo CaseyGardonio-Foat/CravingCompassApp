@@ -17,6 +17,7 @@ export class LandingPageComponent implements OnInit {
   documenuKey: string;
   mapsKey: string;
 
+  coordsRetrieved: boolean = false;
   userLat: number;
   userLng: number;
 
@@ -31,22 +32,12 @@ export class LandingPageComponent implements OnInit {
     this.mapsKey = this.keysService.getMapsKey()
   }
 
-  // onSubmitSearch(form: NgForm) {
-  //   const searchLat = 40.688072;
-  //   const searchLon = -73.997385;
-  //   const searchDistance = form.value.distance;
-  //   const searchDishName = form.value.dishName;
-
-  //   this.searchService.getRestaurants(searchLat, searchLon, searchDistance, searchDishName)
-  //   console.log("search submitted");
-  // }
-
-
   /*this method gets and stores the coordinates for the user's location so they can be passed as queries using search or browse*/
   onSubmitLocationForm(locationForm) {
     console.log(this.locationForm);
     this.searchService.storeUserLocation(locationForm.value.location, locationForm.value.distance);
     this.searchService.getSearchCoordinates(this.mapsKey, locationForm.value.location);
+    this.coordsRetrieved = true;
     // this.userLat = this.searchService.searchLat;
     // this.userLng = this.searchService.searchLng;
   }
