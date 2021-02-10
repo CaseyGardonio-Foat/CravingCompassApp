@@ -5,9 +5,9 @@
     <div class="text-display-nav">{{restaurant.restaurant_name}}</div>
     <div>{{restaurant.address.formatted}}</div>
     <div>{{restaurant.restaurant_phone}}</div>
-    <div>{{restaurant.menu_item_name}}</div>
+    <div>{{restaurant.menu_item_name | uppercase}}</div>
     <div>{{restaurant.menu_item_description}}</div>
-    <div>{{restaurant.menu_item_price}}</div>
+    <div>{{restaurant.menu_item_price | currency}}</div>
     <hr>
   </li>
 </ul>
