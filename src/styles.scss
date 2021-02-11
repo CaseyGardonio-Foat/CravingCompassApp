@@ -69,38 +69,21 @@ $text-muted:                  $muted;
 // // // Darken percentage for links with `.text-*` class (e.g. `.text-success`)
 // $emphasized-link-hover-darken-percentage: 15% !default;
 
-.navbar-brand {
-  /* display:inline-block; */
-  padding-top:0rem;
-  padding-bottom:0rem;
-  /* margin-right:1rem;
-  font-size:1.25rem;
-  line-height:inherit;
-  white-space:nowrap */
-}
-/* $primary_font: 'Jost';
 
-/* font-weight */
-/* $thin:100;
-$light:300;
-$regular:400;
-$bold:700;
-$black:900; */
+// NAVBAR
 
-/* Font size */
-/* $font-xs:12px;
-$font-sm: 14px;
-$primary-fs: 16px;
-$font-md: 18px;
-$font-lg: 20px; */ 
+// $navbar-padding-y:                  $spacer / 2 !default;
+// $navbar-padding-x:                  $spacer !default;
 
-/* body {
-    font-family: $primary_font;
-    font-size: $primary-fs;
-    font-weight: $regular;
-} */
+// $navbar-nav-link-padding-x:         .5rem !default;
 
-// Components
+// $navbar-brand-font-size:            $font-size-lg !default;
+// Compute the navbar-brand padding-y so the navbar-brand will have the same height as navbar-text and nav-link
+// $nav-link-height:                   $font-size-base * $line-height-base + $nav-link-padding-y * 2 !default;
+// $navbar-brand-height:               $navbar-brand-font-size * $line-height-base !default;
+$navbar-brand-padding-y:              0;
+
+// COMPONENTS
 //
 // Custom changes to Bootstrap common padding and border radius sizes and more.
 
