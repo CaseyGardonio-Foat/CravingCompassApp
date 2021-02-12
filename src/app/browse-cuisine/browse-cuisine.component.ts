@@ -14,7 +14,8 @@ export class BrowseCuisineComponent implements OnInit {
   @Input() dishArray: Dish[];
   cuisines: Cuisine[] = []
   selectedContinentRegions: Cuisine[] = [];
-  selectedRegionalCuisines: Cuisine[] = []
+  selectedRegionalCuisines: Cuisine[] = [];
+  selectedSecondaryCuisines: Cuisine[] = [];
 
   constructor(
     private dishService: DishService, 
@@ -23,38 +24,42 @@ export class BrowseCuisineComponent implements OnInit {
 
   ngOnInit(): void {
     this.cuisines = this.cuisineService.getAllCuisines(); 
-    console.log(this.cuisines);
+    // console.log(this.cuisines);
   }
 
   onContinentSelected(selectedContinent) {
+    this.selectedSecondaryCuisines = [];
     this.selectedContinentRegions = [];
     this.cuisineService.selectCuisines(selectedContinent); 
     this.selectedContinentRegions = this.cuisineService.selectedCuisines;
     console.log(this.selectedContinentRegions)
   }
-
-  onRegionSelected(selectedRegion) {
-    this.selectedRegionalCuisines = [];
-    this.cuisineService.selectCuisines(selectedRegion); 
-    this.selectedRegionalCuisines = this.cuisineService.selectedCuisines;
-    console.log(this.selectedRegionalCuisines)
-  }
- 
-  // onCuisineSelected(selectedCusine) {
-  //   this.selectedRegionalCuisines = [];
-  //   this.cuisineService.selectCuisines(selectedRegion); 
-  //   this.selectedRegionalCuisines = this.cuisineService.selectedCuisines;
-  //   console.log(this.selectedRegionalCuisines)
-  // }
   
+  // onSelectCuisine(region: string) {
+  //   const searchLat = this.searchService.searchLat;
+  //   const searchLng = this.searchService.searchLng;
+  //   const searchDistance = this.searchService.searchDistance;
+  //   const selectedCuisine = region;
+
+  //   console.log(selectedCuisine);
+  //   this.searchService.getRestaurantsBrowse(searchLat, searchLng, searchDistance, selectedCuisine)
+  // }
+
   onSelectCuisine(region: string) {
     const searchLat = this.searchService.searchLat;
     const searchLng = this.searchService.searchLng;
     const searchDistance = this.searchService.searchDistance;
     const selectedCuisine = region;
+    this.selectedSecondaryCuisines = [];
 
+    this.cuisineService.selectCuisines(region); 
+      this.selectedSecondaryCuisines = this.cuisineService.selectedCuisines;
+
+    if(this.selectedSecondaryCuisines.length > 0){
+      console.log(this.selectedSecondaryCuisines)
+    } else {
     console.log(selectedCuisine);
     this.searchService.getRestaurantsBrowse(searchLat, searchLng, searchDistance, selectedCuisine)
+    }
   }
-
 }
