@@ -24,7 +24,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { DishService } from './dish.service';
 import { BrowseDropdownDirective } from './browse-dropdown.directive';
 import { CuisineService } from './cuisine.service';
-import { KeysService } from './keys.service';
+// import { KeysService } from './keys.service';
 
 @NgModule({
   declarations: [
@@ -58,7 +58,7 @@ import { KeysService } from './keys.service';
   providers: [
     DishService,
     CuisineService,
-    KeysService
+    // KeysService
   ],
   bootstrap: [AppComponent]
 })

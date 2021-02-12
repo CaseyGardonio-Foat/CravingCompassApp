@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { KeysService } from 'src/app/keys.service';
+// import { KeysService } from 'src/app/keys.service';
 import { SearchService } from 'src/app/search.service';
 // import { AgmCoreModule } from '@agm/core';
 
@@ -20,12 +20,13 @@ export class MapComponent implements OnInit {
 
   constructor(
     private http: HttpClient,
-    private keysService: KeysService,
+    // private keysService: KeysService,
     private searchService: SearchService) { }
 
   ngOnInit(): void {
-    this.documenuKey = this.keysService.getDocumenuKey();
-    this.mapsKey = this.keysService.getMapsKey();  
+    // this.documenuKey = this.keysService.getDocumenuKey();
+    // this.mapsKey = this.keysService.getMapsKey();
+    this.mapsKey = "FLvwrZnG54V5dtE8YR0kxPwT3sr0GFUC";  
     this.lat = this.searchService.searchLat;
     this.lng = this.searchService.searchLng;
     this.restaurantsList = this.searchService.getRestaurantResults();

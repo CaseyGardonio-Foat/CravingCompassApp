@@ -1,6 +1,6 @@
 import { Injectable, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { KeysService } from './keys.service';
+// import { KeysService } from './keys.service';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
 import {Restaurant } from './restaurant.model';
@@ -164,14 +164,14 @@ export class SearchService implements OnInit {
   restaurantResults: any[];
 
   constructor(
-    private keysService: KeysService, 
+    // private keysService: KeysService, 
     private http: HttpClient, 
     private router: Router,
     private cuisineService: CuisineService) { }
 
   ngOnInit() {
     // this.mapsKey = this.keysService.getMapsKey();
-    this.documenuKey = this.keysService.getDocumenuKey();
+    // this.documenuKey = this.keysService.getDocumenuKey();
   }
 
   storeUserLocation(searchedLocation: string, searchedDistance: number) {

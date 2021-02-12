@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { KeysService } from '../keys.service';
+// import { KeysService } from '../keys.service';
 import { SearchService } from '../search.service';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -24,12 +24,12 @@ export class LandingPageComponent implements OnInit {
   constructor(
     private searchService: SearchService, 
     private http: HttpClient, 
-    private keysService: KeysService,
+    // private keysService: KeysService,
     private router: Router) { }
 
   ngOnInit(): void {
-    this.documenuKey = this.keysService.getDocumenuKey();
-    this.mapsKey = this.keysService.getMapsKey()
+    // this.documenuKey = this.keysService.getDocumenuKey();
+    // this.mapsKey = this.keysService.getMapsKey()
   }
 
   /*this method gets and stores the coordinates for the user's location so they can be passed as queries using search or browse*/
