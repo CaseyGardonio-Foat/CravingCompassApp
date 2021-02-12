@@ -6,6 +6,13 @@ import { Cuisine } from './cuisine.model';
 })
 export class CuisineService {
   cuisines: Cuisine[] = [
+    new Cuisine('Cafe', '../assets/foodIcons/Cafe.svg', 'type', [], []),
+    new Cuisine('Dessert', '../assets/foodIcons/Dessert.svg', 'type', [], []),
+    new Cuisine('Fast Casual', '../assets/foodIcons/Fast-Casual.svg', 'type', [], []),
+    new Cuisine('Fine Dining', '../assets/foodIcons/Fine-Dining.svg', 'type', [], []),
+    new Cuisine('Healthy', '../assets/foodIcons/Healthy_Salad.svg', 'type', [], []),
+    new Cuisine('Brunch', '../assets/foodIcons/Meals.svg', 'type', [], []),    
+
     new Cuisine('Americas', '../assets/foodIcons/Regions/Americas.svg', 'continent', [], ['Canada', 'United States', 'Mexico', 'Central America/Caribbean', 'South America']),
     // new Cuisine('North America', '../assets/foodIcons/Regions/NorthAmerica.svg', 'region', ['Americas'], ['Canada', 'USA', 'Mexico']),
     new Cuisine('Canadian', '../assets/foodIcons/Regions/Canada_ButterTart-01.svg', 'country', ['Americas'], []),

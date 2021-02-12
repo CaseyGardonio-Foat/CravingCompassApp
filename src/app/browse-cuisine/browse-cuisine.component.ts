@@ -18,13 +18,12 @@ export class BrowseCuisineComponent implements OnInit {
   selectedSecondaryCuisines: Cuisine[] = [];
 
   constructor(
-    private dishService: DishService, 
+    // private dishService: DishService, 
     private cuisineService: CuisineService,
     private searchService: SearchService) { }
 
   ngOnInit(): void {
     this.cuisines = this.cuisineService.getAllCuisines(); 
-    // console.log(this.cuisines);
   }
 
   onContinentSelected(selectedContinent) {
