@@ -22,7 +22,7 @@ export class CuisineService {
     new Cuisine('Southwestern/TexMex', '../assets/foodIcons/Mexican_Taco.svg', 'style', ['United States'], []),
     new Cuisine('Jewish', '../assets/foodIcons/Jewish_Bagel.svg', 'style', ['United States'], []),
     new Cuisine('Creole/Cajun', '../assets/foodIcons/Pizza.svg', 'style', ['United States'], []),
-    new Cuisine('Eastern Seaboard', '../assets/foodIcons/Pizza.svg', 'style', ['United States'], []),
+    new Cuisine('Eastern Seaboard', '../assets/foodIcons/EasternSeaboard_Lobster.svg', 'style', ['United States'], []),
 
     new Cuisine('Mexican', '../assets/foodIcons/Mexican_Taco.svg', 'country', ['Americas'], []),
   
