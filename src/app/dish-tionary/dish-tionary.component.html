@@ -12,7 +12,8 @@
             <form class="form-inline ml-3" #filterKeyword="ngForm">
                 <div class="input-group col-md-12">
                     <label class="sr-only" for="filterKeyword">Search for a dish or cuisine</label>
-                    <input type="text" class="form-control text-uppercase" id="filterKeyword" name="filterKeyword"
+                    <input type="text" class="form-control text-uppercase rounded-left" 
+                    id="filterKeyword" name="filterKeyword"
                     ngModel required placeholder="Search for a dish or cuisine!">
                     <div class="input-group-append">
                         <button type="button" class="btn btn-danger" (click)="onFilterDishes(filterKeyword)">
