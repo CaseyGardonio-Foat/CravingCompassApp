@@ -17,6 +17,8 @@ export class LandingPageComponent implements OnInit {
   documenuKey: string;
   mapsKey: string;
 
+  defaultDistance: string = "5";
+
   coordsRetrieved: boolean = false;
   userLat: number;
   userLng: number;

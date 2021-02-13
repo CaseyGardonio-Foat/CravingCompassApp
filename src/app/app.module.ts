@@ -16,7 +16,6 @@ import { MapComponent } from './restaurants/map/map.component';
 import { RestaurantMenuComponent } from './restaurants/restaurant-menu/restaurant-menu.component';
 import { RestaurantDetailComponent } from './restaurants/restaurant-detail/restaurant-detail.component';
 import { DishTionaryComponent } from './dish-tionary/dish-tionary.component';
-import { DishDetailComponent } from './dish-tionary/dish-detail/dish-detail.component';
 import { BrowseCuisineComponent } from './browse-cuisine/browse-cuisine.component';
 import { BrowseTypeComponent } from './browse-type/browse-type.component';
 import { BrowseNationalityComponent } from './browse-cuisine/browse-nationality/browse-nationality.component';
@@ -39,12 +38,11 @@ import { CuisineService } from './cuisine.service';
     RestaurantMenuComponent,
     RestaurantDetailComponent,
     DishTionaryComponent,
-    DishDetailComponent,
     BrowseCuisineComponent,
     BrowseTypeComponent,
     BrowseNationalityComponent,
     PageNotFoundComponent,
-    BrowseDropdownDirective
+    BrowseDropdownDirective,
   ],
   imports: [
     BrowserModule,

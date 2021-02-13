@@ -41,10 +41,10 @@
 
             <label class="sr-only" for="distance">distance</label>
             <select class="custom-select form-control col-2" id="distance" name="distance" 
-            ngModel required>
+            [ngModel]="defaultDistance" required>
               <option value=".5">.5 mi</option>
               <option value="1">1 mi</option>
-              <option selected value="5">5 mi</option>
+              <option value="5">5 mi</option>
               <option value="10">10 mi</option>
               <option value="20">20 mi</option>
             </select>
@@ -60,7 +60,7 @@
             ngModel required [disabled]="!locationForm.valid" placeholder="I know just what I want...(or browse for a cuisine below!)">
           </div>
 
-          <button class="btn btn-outline-warning btn-block text-display-nav" style="font-weight: bold; margin-bottom: 10px;" type="submit" [disabled]='!dishSearch.valid' >Let's Go!</button>
+          <button class="btn btn-outline-warning btn-block text-display-nav" style="font-weight: bold; margin-bottom: 10px;" type="submit" [disabled]='!dishSearch.valid'>Let's Go!</button>
         </form>
         <!--end: landing page jumbotron form-->
 

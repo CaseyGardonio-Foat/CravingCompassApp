@@ -41,7 +41,7 @@ export class DishService {
     new Dish('Cataplana', '', '../assets/photos/cataplana_portuguese-clams-sausage_LeitesCulinaria_masked.png', ['cataplana', 'european', 'europe', 'portugal', 'portuguese', 'cooking method', 'cooking vessel', 'pan']),
     new Dish('Catfish', '', '../assets/photos/catfish_4128796-hero-19a23bb837a04c66a65ee6c8cb31ff70_SpruceEats_masked.png', ['catfish', 'americas', 'american', 'north america', 'north american', 'usa', 'united states', 'southern', 'fish']),
     new Dish('Ceviche', '', '../assets/photos/ceviche_41531-sfs-shrimp-ceviche-tomato-jicama-avocado-23_CooksIllustrated_masked.png', ['ceviche', 'americas', 'american', 'south america', 'south american', 'central america', 'central american', 'caribbean', 'peru', 'peruvian', 'fish', 'raw']),
-    new Dish('Chile Relleno', '', '../assets/photos.chileRelleno_k_Photo_Recipes_2019-07-how-to-chile-rellenos_How-to-make-best-chile-rellenos_056_TheKitchn_masked.png', ['chile relleno', 'chiles rellenos', 'chili relleno', 'chilis rellenos', 'americas', 'american', 'north america', 'north american', 'mexico', 'mexican', 'fried', 'stuffed']),
+    new Dish('Chile Relleno', '', '../assets/photos/chileRelleno_k_Photo_Recipes_2019-07-how-to-chile-rellenos_How-to-make-best-chile-rellenos_056_TheKitchn_masked.png', ['chile relleno', 'chiles rellenos', 'chili relleno', 'chilis rellenos', 'americas', 'american', 'north america', 'north american', 'mexico', 'mexican', 'fried', 'stuffed']),
     new Dish('Choucroute Garnie', '', '../assets/photos/choucrouteGarnie_200612-r-xl-choucroute-garnie_FoodAndWine_masked.png', ['choucroute garnie', 'choucroute', 'europe', 'european', 'germany', 'german', 'france', 'french', 'sausage', 'meat']),
     new Dish('Churrasco', '', '../assets/photos/churrasco_featured-brazilian-churrasco_BarbecueBible_masked.png', ['churrasco', 'americas', 'american', 'south america', 'south american', 'brazil', 'brazillian', 'meat']),
     new Dish('Cockaleekie Soup', '', '../assets/photos/cockaleekie_timesColonist_masked.png', ['cockaleekie', 'cockaleekie soup', 'cockaleekie stew', 'europe', 'european', 'united kingdom', 'uk', 'great britain', 'scotland', 'scottish', 'soup', 'stew']),
@@ -56,7 +56,10 @@ export class DishService {
     new Dish('Crumpet', '', '../assets/photos/crumpet_countryfile_masked.png', ['crumpet', 'crumpets', 'europe', 'european', 'great britain', 'uk', 'united kingdom', 'england', 'english', 'bread']),
     new Dish('Dal', '', '../assets/photos/daal_Nepali-Dal-Bhat-FI-500x500_CooksHideout_masked.png', ['dal', 'dal bhat', 'asia', 'asian', 'himalayas', 'himalayan', 'nepal', 'nepalese', 'lentils', 'soup', 'stew']),
     new Dish('Dosa', '', '../assets/photos/dosa_maxresdefault_youtube_CookingShooking_masked.png', ['dosa', 'dosas', 'asia', 'asian', 'india', 'indian', 'pancake']),
+    new Dish('','','',[]),
   ];
+  
+  keywordDishes: any[] = [];
 
   constructor() { }
 
@@ -64,13 +67,13 @@ export class DishService {
     return this.dishes;
   }
 
-  getKeywordDishes(selectedKeyWord) {
-    let keywordDishes = [];
+  getKeywordDishes(selectedKeyword) {
+    this.keywordDishes = [];
     for(let dish of this.dishes){
-      if(dish.keyWords.includes(selectedKeyWord)){
-        keywordDishes.push(dish);
+      if(dish.keyWords.includes(selectedKeyword)){
+        this.keywordDishes.push(dish);
       }
-      return keywordDishes;
     }
+    return this.keywordDishes;
   }
 }
