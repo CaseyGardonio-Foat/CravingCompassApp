@@ -10,12 +10,13 @@ export class DishTionaryComponent implements OnInit {
   dishes: any[] = [];
   filterKeyword: string = '';
   filteredDishes: string[] = [];
+  errorMessage: string = "Aw crumbs! We couldn't find that search term. Maybe try a different spelling?"
 
   constructor(private dishService: DishService) { }
 
   ngOnInit() {
     this.dishes = this.dishService.getAllDishes(); 
-    console.log(this.filteredDishes.length);
+    this.filteredDishes = [];
   }
 
   onFilterDishes(filterKeyword) {
