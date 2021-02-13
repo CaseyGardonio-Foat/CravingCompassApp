@@ -33,16 +33,6 @@ export class BrowseCuisineComponent implements OnInit {
     this.selectedContinentRegions = this.cuisineService.selectedCuisines;
     console.log(this.selectedContinentRegions)
   }
-  
-  // onSelectCuisine(region: string) {
-  //   const searchLat = this.searchService.searchLat;
-  //   const searchLng = this.searchService.searchLng;
-  //   const searchDistance = this.searchService.searchDistance;
-  //   const selectedCuisine = region;
-
-  //   console.log(selectedCuisine);
-  //   this.searchService.getRestaurantsBrowse(searchLat, searchLng, searchDistance, selectedCuisine)
-  // }
 
   onSelectCuisine(region: string) {
     const searchLat = this.searchService.searchLat;
