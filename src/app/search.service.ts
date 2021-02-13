@@ -205,6 +205,8 @@ export class SearchService implements OnInit {
     //retrieves searched dish name so restaurants-list can display on results list
     this.searchDish = searchDish;
 
+    this.router.navigate(['/restaurant-results']);
+    
     return this.http
       .get<RestaurantsResponse>(`https://api.documenu.com/v2/menuitems/search/geo?lat=${searchLat}&lon=${searchLng}&distance=${searchDistance}&search=${searchDish}`, 
         {
@@ -215,9 +217,6 @@ export class SearchService implements OnInit {
         //API returns JSON object of type RestaurantResults, which contains restaurant info in the "data" array
         this.restaurantResponse = restaurants;
         this.restaurantResults = this.restaurantResponse.data;
-       
-        console.log(this.restaurantResults);
-        this.router.navigate(['/restaurant-results']);
       }
     );
   };
