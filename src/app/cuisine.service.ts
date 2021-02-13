@@ -15,9 +15,9 @@ export class CuisineService {
 
     new Cuisine('Americas', '../assets/foodIcons/Regions/Americas.svg', 'continent', [], ['Canada', 'United States', 'Mexico', 'Central America/Caribbean', 'South America']),
  
-    new Cuisine('Canadian', '../assets/foodIcons/Regions/Canada_ButterTart-01.svg', 'country', ['Americas'], []),
+    new Cuisine('Canadian', '../assets/foodIcons/Canada_ButterTart-01.svg', 'country', ['Americas'], []),
     
-    new Cuisine('United States', '../assets/foodIcons/Regions/American_Burger.svg', 'country', ['Americas'], ['Southern/BBQ', 'Hawaiian', 'Southwestern/TexMex', 'Jewish', 'Creole/Cajun', 'Eastern Seaboard']),
+    new Cuisine('United States', '../assets/foodIcons/American_Burger.svg', 'country', ['Americas'], ['Southern/BBQ', 'Hawaiian', 'Southwestern/TexMex', 'Jewish', 'Creole/Cajun', 'Eastern Seaboard']),
     new Cuisine('Hawaiian', '../assets/foodIcons/Pizza.svg', 'style', ['United States'], []),
     new Cuisine('Southwestern/TexMex', '../assets/foodIcons/Mexican_Taco.svg', 'style', ['United States'], []),
     new Cuisine('Jewish', '../assets/foodIcons/Jewish_Bagel.svg', 'style', ['United States'], []),
@@ -47,8 +47,7 @@ export class CuisineService {
     new Cuisine('Spanish', '../assets/foodIcons/Spanish_Paella.svg', 'country', ['Europe'], []),
     new Cuisine('Belgian', '../assets/foodIcons/Pizza.svg', 'region', ['Europe'], []),
     new Cuisine('Scandinavian', '../assets/foodIcons/Pizza.svg', 'region', ['Europe'], []),
-    new Cuisine('Eastern European', '../assets/foodIcons/Pizza.svg', 'country', ['Europe'], []), 
-    new Cuisine('Scandinavian', '../assets/foodIcons/Pizza.svg', 'region', ['Europe'], []), 
+    new Cuisine('Eastern European', '../assets/foodIcons/EasternEuropean_Pierogi.svg', 'country', ['Europe'], []), 
     new Cuisine('British Isles', '../assets/foodIcons/Pizza.svg', 'region', ['Europe'], []),
 
     new Cuisine('Africa', '../assets/foodIcons/Regions/Region_Africa.svg', 'continent', [], ['Moroccan', 'North African', 'Turkish', 'Ethiopian']),
@@ -72,15 +71,15 @@ export class CuisineService {
 
     new Cuisine('Asia', '../assets/foodIcons/Regions/Region_Asia.svg', 'continent', [], ['Chinese', 'Japanese', 'Korean', 'Indian', 'Southeast Asian', 'Himalayan']),
     new Cuisine('Chinese', '../assets/foodIcons/Pizza.svg', 'country', ['Asia'], []),
-    new Cuisine('Japanese', '../assets/foodIcons/Pizza.svg', 'country', ['Asia'], []),
+    new Cuisine('Japanese', '../assets/foodIcons/Japan_Sushi.svg', 'country', ['Asia'], []),
     new Cuisine('Korean', '../assets/foodIcons/Pizza.svg', 'country', ['Asia'], []),
-    new Cuisine('Indian', '../assets/foodIcons/Pizza.svg', 'country', ['Asia'], []),
+    new Cuisine('Indian', '../assets/foodIcons/Indian_Samosas.svg', 'country', ['Asia'], []),
     new Cuisine('Himalayan', '../assets/foodIcons/Pizza.svg', 'region', ['Asia'], []),
     new Cuisine('Southeast Asian', '../assets/foodIcons/Pizza.svg', 'region', ['Asia'], ['Vietnamese', 'Thai', 'Malaysian', 'Filipino']),
-    new Cuisine('Vietnamese', '../assets/foodIcons/Pizza.svg', 'country', ['Southeast Asia'], []),
-    new Cuisine('Thai', '../assets/foodIcons/Pizza.svg', 'country', ['Southeast Asia'], []),
-    new Cuisine('Malaysian', '../assets/foodIcons/Pizza.svg', 'country', ['Southeast Asia'], []),
-    new Cuisine('Filipino', '../assets/foodIcons/Pizza.svg', 'country', ['Southeast Asia'], []),
+    new Cuisine('Vietnamese', '../assets/foodIcons/Vietnamese_Pho.svg', 'country', ['Southeast Asian'], []),
+    new Cuisine('Thai', '../assets/foodIcons/Thai_PadThai.svg', 'country', ['Southeast Asian'], []),
+    new Cuisine('Malaysian', '../assets/foodIcons/Pizza.svg', 'country', ['Southeast Asian'], []),
+    new Cuisine('Filipino', '../assets/foodIcons/Pizza.svg', 'country', ['Southeast Asian'], []),
 
   ]
 
