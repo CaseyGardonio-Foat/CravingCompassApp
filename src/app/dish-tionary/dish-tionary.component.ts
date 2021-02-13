@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { DishService } from '../dish.service';
 
 @Component({
@@ -7,16 +7,19 @@ import { DishService } from '../dish.service';
   styleUrls: ['./dish-tionary.component.scss']
 })
 export class DishTionaryComponent implements OnInit {
-  dishes = [];
+  dishes: any[] = [];
+  filterKeyword: string = '';
+  filteredDishes: string[] = [];
 
   constructor(private dishService: DishService) { }
 
   ngOnInit() {
     this.dishes = this.dishService.getAllDishes(); 
-    console.log(this.dishes);
+    console.log(this.filteredDishes.length);
   }
 
-  onFilterDishes() {
-    console.log('dishes filtered');
-  }
+  onFilterDishes(filterKeyword) {
+    let keyword = filterKeyword.value.filterKeyword.toLowerCase();
+    this.filteredDishes = this.dishService.getKeywordDishes(keyword);
+  }  
 }
