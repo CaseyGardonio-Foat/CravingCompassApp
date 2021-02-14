@@ -17,16 +17,17 @@ export class CuisineService {
  
     new Cuisine('Canadian', '../assets/foodIcons/Canada_ButterTart-01.svg', 'country', ['Americas'], []),
     
-    new Cuisine('United States', '../assets/foodIcons/American_Burger.svg', 'country', ['Americas'], ['Southern/BBQ', 'Hawaiian', 'Southwestern/TexMex', 'Jewish', 'Creole/Cajun', 'Eastern Seaboard']),
+    new Cuisine('United States', '../assets/foodIcons/American_Burger.svg', 'country', ['Americas'], ['Southern/BBQ', 'Hawaiian', 'Southwestern /TexMex', 'Jewish', 'Creole/Cajun', 'Eastern Seaboard']),
     new Cuisine('Hawaiian', '../assets/foodIcons/Pizza.svg', 'style', ['United States'], []),
-    new Cuisine('Southwestern/TexMex', '../assets/foodIcons/Mexican_Taco.svg', 'style', ['United States'], []),
+    new Cuisine('Southwestern /TexMex', '../assets/foodIcons/Mexican_Taco.svg', 'style', ['United States'], []),
     new Cuisine('Jewish', '../assets/foodIcons/Jewish_Bagel.svg', 'style', ['United States'], []),
     new Cuisine('Creole/Cajun', '../assets/foodIcons/Pizza.svg', 'style', ['United States'], []),
     new Cuisine('Eastern Seaboard', '../assets/foodIcons/EasternSeaboard_Lobster.svg', 'style', ['United States'], []),
+    new Cuisine('Southern/BBQ', '../assets/foodIcons/USA_BBQ.svg', 'style', ['United States'], []),
 
     new Cuisine('Mexican', '../assets/foodIcons/Mexican_Taco.svg', 'country', ['Americas'], []),
   
-    new Cuisine('Central America/Caribbean', '../assets/foodIcons/Regions/CentralAmerica_Caribbean.svg', 'region', ['Americas'], ['Central America', 'Jamaica', 'Puerto Rico', 'Cuba']),
+    new Cuisine('Central America /Caribbean', '../assets/foodIcons/Regions/CentralAmerica_Caribbean.svg', 'region', ['Americas'], ['Central America', 'Jamaica', 'Puerto Rico', 'Cuba']),
     new Cuisine('Central American', '../assets/foodIcons/Pizza.svg', 'country', ['Central America/Caribbean'], []),
     new Cuisine('Jamaican', '../assets/foodIcons/Pizza.svg', 'country', ['Central America/Caribbean'], []),
     new Cuisine('Puerto Rican', '../assets/foodIcons/Pizza.svg', 'country', ['Central America/Caribbean'], []),
