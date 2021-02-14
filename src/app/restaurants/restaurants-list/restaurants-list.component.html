@@ -1,5 +1,6 @@
 <h1 *ngIf="restaurantsList.length===0" class="text-display-nav text-primary">Sorry, nobody offers {{ searchDish || selectedCuisine + " food" }} near you</h1>
-<h1 *ngIf="restaurantsList.length > 0" class="text-display-nav text-primary">{{ searchDish || selectedCuisine + " food" }} near You!</h1>
+<h1 *ngIf="restaurantsList.length > 0 && searchDish" class="text-display-nav text-primary">{{ searchDish }} near You!</h1>
+<h1 *ngIf="restaurantsList.length > 0 && selectedCusine" class="text-display-nav text-primary">{{ selectedCuisine }}  food near You!</h1> 
 <ul class="list-unstyled">
   <li *ngFor="let restaurant of restaurantsList" style="cursor: pointer;">
     <div class="text-display-nav">{{restaurant.restaurant_name}}</div>

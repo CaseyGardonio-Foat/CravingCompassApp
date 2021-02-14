@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { RestaurantDetail } from '../restaurant-detail.model';
 import { SearchService } from '../../search.service';
 
@@ -8,9 +8,9 @@ import { SearchService } from '../../search.service';
   styleUrls: ['./restaurants-list.component.scss']
 })
 export class RestaurantsListComponent implements OnInit {
-  restaurantsList: any[];
-  searchDish: string;
-  selectedCuisine: string;
+  restaurantsList: any[] = [];
+  searchDish: string = '';
+  selectedCuisine: string = '';
 
   constructor(private searchService: SearchService) { }
 
@@ -19,5 +19,10 @@ export class RestaurantsListComponent implements OnInit {
     this.selectedCuisine = this.searchService.selectedCuisine
     this.restaurantsList = this.searchService.getRestaurantResults();
   }
+
+  // ngOnChanges(changes: SimpleChanges): {
+  //   this.selectedCuisine = '';
+  //   this.searchDish = '';
+  // }
 
 }
