@@ -3,7 +3,6 @@ import { NgModule, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
-// import { AgmCoreModule } from '@agm/core';
 
 import { AppComponent } from './app.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
@@ -49,9 +48,6 @@ import { CuisineService } from './cuisine.service';
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    // AgmCoreModule.forRoot({
-    //   apiKey: ''
-    // })
   ],
   providers: [
     DishService,

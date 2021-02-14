@@ -1,8 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-// import { KeysService } from 'src/app/keys.service';
+import { KeysService } from 'src/app/keys.service';
 import { SearchService } from 'src/app/search.service';
-// import { AgmCoreModule } from '@agm/core';
 
 @Component({
   selector: 'app-map',
@@ -20,16 +19,17 @@ export class MapComponent implements OnInit {
 
   constructor(
     private http: HttpClient,
-    // private keysService: KeysService,
+    private keysService: KeysService,
     private searchService: SearchService) { }
 
   ngOnInit(): void {
     // this.documenuKey = this.keysService.getDocumenuKey();
     // this.mapsKey = this.keysService.getMapsKey();
-    this.mapsKey = "FLvwrZnG54V5dtE8YR0kxPwT3sr0GFUC";  
+    console.log('maps init');
     this.lat = this.searchService.searchLat;
     this.lng = this.searchService.searchLng;
     this.restaurantsList = this.searchService.getRestaurantResults();
+    console.log(this.restaurantsList);
     this.formatRestaurantAddresses();
     console.log(this.restaurantAddressesString);
   };
@@ -44,7 +44,7 @@ export class MapComponent implements OnInit {
 
   /*calling the MapQuest api directly from the html template works better than making the call from a method here*/
   // getMap() {
-  //   let mapsKey = this.mapsKey;
+  //   let mapsKey = this.keysService.getMapQuestKey();
   //   let lat = this.lat;
   //   let lng = this.lng;
   //   return this.http

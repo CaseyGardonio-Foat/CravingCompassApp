@@ -1,11 +1,10 @@
 import { Injectable, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-// import { KeysService } from './keys.service';
+import { KeysService } from './keys.service';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
 import {Restaurant } from './restaurant.model';
 import { RestaurantDetail } from './restaurants/restaurant-detail.model';
-import { CuisineService } from './cuisine.service';
 
 //GeocodeResponse interface copies JSON object returned from MapQuest Geocoding API:
 //https://developer.mapquest.com/documentation/samples/geocoding/v1/address/
@@ -149,8 +148,9 @@ export interface RestaurantsResponseBrowse {
 export class SearchService implements OnInit {
   searchResults = new Subject();
 
-  mapsKey: string = "FLvwrZnG54V5dtE8YR0kxPwT3sr0GFUC";
-  documenuKey: string = "23bf5213c9650586e04996e21ead58f6";
+  //there is no need to declare these properties here, because the keys only get retrieved from the keysService inside of the methods that require them
+  // mapsKey: string = '';
+  // documenuKey: string = '';
 
   selectedCuisine: string;
   searchDish: string;
@@ -164,26 +164,30 @@ export class SearchService implements OnInit {
   restaurantResults: any[];
 
   constructor(
-    // private keysService: KeysService, 
     private http: HttpClient, 
     private router: Router,
-    private cuisineService: CuisineService) { }
+    private keysService: KeysService) { }
 
   ngOnInit() {
-    // this.mapsKey = this.keysService.getMapsKey();
+    console.log('ngOnInit fired');
+    // console.log(this.keysService.getMapQuestKey());
+    // this.mapsKey = this.keysService.getMapQuestKey();
+    // console.log(this.mapsKey);
     // this.documenuKey = this.keysService.getDocumenuKey();
   }
 
   storeUserLocation(searchedLocation: string, searchedDistance: number) {
     this.searchLocation = searchedLocation;
     this.searchDistance = searchedDistance;
+    const mapsKey = this.keysService.getMapQuestKey();
 
-    this.getSearchCoordinates(this.mapsKey, searchedLocation);
+    this.getSearchCoordinates(mapsKey, searchedLocation);
   }
 
   /*Get coordinates for user's location from MapQuest GeoCoding API: */
   getSearchCoordinates(mapsKey: string, location: string) {
-    mapsKey = this.mapsKey;
+    //calling keysService.getMapQuestKey() in ngOnInit does not work, for some reason; keysService must be called within the method that requires the key
+    mapsKey = this.keysService.getMapQuestKey();
     location = this.searchLocation;
     return this.http
     .get<GeocodeResponse>(`http://www.mapquestapi.com/geocoding/v1/address?key=${mapsKey}&location=${location}`)
@@ -201,22 +205,23 @@ export class SearchService implements OnInit {
     searchLat = this.searchLat;
     searchLng = this.searchLng;
     searchDistance = this.searchDistance;
+    const documenuKey = this.keysService.getDocumenuKey();
 
     //retrieves searched dish name so restaurants-list can display on results list
     this.searchDish = searchDish;
-
-    this.router.navigate(['/restaurant-results']);
     
     return this.http
       .get<RestaurantsResponse>(`https://api.documenu.com/v2/menuitems/search/geo?lat=${searchLat}&lon=${searchLng}&distance=${searchDistance}&search=${searchDish}`, 
         {
-          headers: new HttpHeaders({'X-API-KEY': this.documenuKey
+          headers: new HttpHeaders({'X-API-KEY': documenuKey,
         })
       })
       .subscribe(restaurants => {
         //API returns JSON object of type RestaurantResults, which contains restaurant info in the "data" array
         this.restaurantResponse = restaurants;
         this.restaurantResults = this.restaurantResponse.data;
+
+        this.router.navigate(['/restaurant-results']);
       }
     );
   };
@@ -227,6 +232,7 @@ export class SearchService implements OnInit {
     searchLat = this.searchLat;
     searchLng = this.searchLng;
     searchDistance = this.searchDistance;
+    const documenuKey = this.keysService.getDocumenuKey();
 
     //retrieves searched dish name so restaurants-list can display on results list
     this.selectedCuisine = selectedCuisine;
@@ -234,7 +240,7 @@ export class SearchService implements OnInit {
     return this.http
       .get<RestaurantsResponse>(`https://api.documenu.com/v2/restaurants/search/geo?lat=${searchLat}&lon=${searchLng}&distance=${searchDistance}&cuisine=${this.selectedCuisine}`, 
         {
-          headers: new HttpHeaders({'X-API-KEY': this.documenuKey
+          headers: new HttpHeaders({'X-API-KEY': documenuKey
         })
       })
       .subscribe(restaurants => {
