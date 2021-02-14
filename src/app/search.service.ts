@@ -205,6 +205,7 @@ export class SearchService implements OnInit {
     searchLat = this.searchLat;
     searchLng = this.searchLng;
     searchDistance = this.searchDistance;
+    this.selectedCuisine = '';
     const documenuKey = this.keysService.getDocumenuKey();
 
     //retrieves searched dish name so restaurants-list can display on results list
@@ -232,6 +233,7 @@ export class SearchService implements OnInit {
     searchLat = this.searchLat;
     searchLng = this.searchLng;
     searchDistance = this.searchDistance;
+    this.searchDish = '';
     const documenuKey = this.keysService.getDocumenuKey();
 
     //retrieves searched dish name so restaurants-list can display on results list
