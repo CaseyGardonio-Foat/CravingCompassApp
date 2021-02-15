@@ -94,7 +94,7 @@
     </div>
 </div>
 <div class="container-fluid" *ngIf="filteredDishes.length > 0 ">
-    <div class="row" id="entry" *ngFor="let dish of filteredDishes">
+    <div class="row bg-{{dish.bgColor}}" id="entry" *ngFor="let dish of filteredDishes">
         <div class="col-md-1"></div>
         <img [src]="dish.imagePath" alt='{{dish.name}}' class='col-md-2'>
         <div class="col-md-1"></div>
