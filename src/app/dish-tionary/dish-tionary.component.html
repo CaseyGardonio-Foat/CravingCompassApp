@@ -3,7 +3,7 @@
     <div class="row justify-content-center my-5">
         <div class="col-md-10">
             <h1 class="text-display-1 text-center text-primary" style="letter-spacing: -3px;">Welcome  to  the  Dish-tionary!</h1>
-            <p class="lead text-center text-secondary">Learn more about unfamiliar dishes! Search by name or browse by region, cuisine, or type.</p>
+            <p class="lead text-center text-secondary">Learn more about unfamiliar dishes! Search by name,region, cuisine, or type.</p>
         </div>
     </div>
 
@@ -82,7 +82,7 @@
 </div>
 
 <div class="container-fluid" *ngIf="filteredDishes.length === 0">
-    <div class="row" id="entry" *ngFor="let dish of dishes"> 
+    <div class="row bg-{{dish.bgColor}}" id="entry" *ngFor="let dish of dishes"> 
         <div class="col-md-1"></div>
         <img [src]="dish.imagePath" alt='{{dish.name}}' class='col-md-2'>
         <div class="col-md-1"></div>
