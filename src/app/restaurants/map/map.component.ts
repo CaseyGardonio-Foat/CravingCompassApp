@@ -23,8 +23,8 @@ export class MapComponent implements OnInit {
     private searchService: SearchService) { }
 
   ngOnInit(): void {
-    // this.documenuKey = this.keysService.getDocumenuKey();
-    // this.mapsKey = this.keysService.getMapsKey();
+    this.documenuKey = this.keysService.getDocumenuKey();
+    this.mapsKey = this.keysService.getMapQuestKey();
     console.log('maps init');
     this.lat = this.searchService.searchLat;
     this.lng = this.searchService.searchLng;
