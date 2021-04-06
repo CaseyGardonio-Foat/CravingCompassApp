@@ -1,10 +1,22 @@
 # CravingCompassApp
 
+Capstone project for LaunchCode's CoderGirl program, Unit 2, front end web development track. For more information on the project background and future plans, please see: https://docs.google.com/presentation/d/1QQwEc3KtGBuYhOIloPdcARHyj65rNke8oT__GYjV6no/edit?usp=sharing .
+
+## Image credits
+
+As a student project, this app is for educational and portfolio use only and includes some photographs that are not licensed for commercial use. Photo information, including creator names if available, are included in the file names for each image. All other graphic elements are licensed for commercial use and/or created by Casey Gardonio-Foat, 2021.
+
+## API Keys required, not included
+
+Project requires use of MapQuest and DocuMenu APIs. These keys and the file that holds them are not included in this repo, and are necessary to compile and use the app. Please contact me to obtain the keys and directions for using them in the project.
+
+## Framework
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.2.
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `npm install` to download and install Angular (if not already installed). Run `ng serve` for a dev server (note that the private API keys.service.ts file is required; see "API Keys" above for more information.) Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
